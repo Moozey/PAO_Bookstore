@@ -8,8 +8,8 @@ public class Book extends Product {
     private Type type;
     private int pages;
 
-    public Book(int id, String title, String description, double price, Author author, Type type, int pages) {
-        super(id, title, description, price);
+    public Book(String title, String description, double price, Author author, Type type, int pages) {
+        super(title, description, price);
         this.author = author;
         this.type = type;
         this.pages = pages;

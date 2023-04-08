@@ -7,8 +7,8 @@ public class DVD extends Product {
     private Band band;
     private Type type;
 
-    public DVD(int id, String title, String description, double price, Band band, Type type) {
-        super(id, title, description, price);
+    public DVD(String title, String description, double price, Band band, Type type) {
+        super(title, description, price);
         this.band = band;
         this.type = type;
     }

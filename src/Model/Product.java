@@ -2,12 +2,15 @@ package Model;
 
 public class Product {
     private int id;
+    private static int nextId = 1;
     private String title;
     private String description;
     private double price;
 
-    public Product(int id, String title, String description, double price) {
-        this.id = id;
+
+    public Product(String title, String description, double price) {
+        this.id = nextId;
+        nextId++;
         this.title = title;
         this.description = description;
         this.price = price;

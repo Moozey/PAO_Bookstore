@@ -9,8 +9,8 @@ public class Vinyl extends Product {
     private Band band;
     private Type type;
 
-    public Vinyl(int id, String title, String description, double price, Band band, Type type) {
-        super(id, title, description, price);
+    public Vinyl(String title, String description, double price, Band band, Type type) {
+        super(title, description, price);
         this.band = band;
         this.type = type;
     }

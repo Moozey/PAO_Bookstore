@@ -8,8 +8,8 @@ public class Client extends Person{
     private String phoneNumber;
     private Order shoppingCart;
 
-    public Client(int id, String firstName, String lastName, String address, String email, String phoneNumber, Order shoppingCart, List<Order> pastOrders) {
-        super(id, firstName, lastName);
+    public Client(String firstName, String lastName, String address, String email, String phoneNumber, Order shoppingCart, List<Order> pastOrders) {
+        super(firstName, lastName);
         this.address = address;
         this.email = email;
         this.phoneNumber = phoneNumber;
