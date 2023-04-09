@@ -1,7 +1,9 @@
 package Service;
 
 import Model.Client;
+import Model.Order;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClientService implements ClientInterface{
@@ -14,24 +16,26 @@ public class ClientService implements ClientInterface{
         }
         return null;
     }
-
     @Override
     public void deleteClientById(int id) {
-
+        for (int c=0; c<Client.getListOfClients().size(); c++) {
+            if(Client.getListOfClients().get(c).getId() == id)
+                Client.getListOfClients().remove(c);
+        }
     }
-
-    @Override
-    public Client addClient(String firstName, String lastName) {
-        return null;
-    }
-
     @Override
     public List<Client> findClientsByNumberOfOrders(int orders) {
-        return null;
+        List<Client> listOfCustomers = new ArrayList<Client>();
+        for (int c=0; c<Client.getListOfClients().size(); c++) {
+            if(Client.getListOfClients().get(c).getPastOrders().size() >= orders)
+                listOfCustomers.add(Client.getListOfClients().get(c));
+        }
+        return listOfCustomers;
     }
 
     @Override
     public List<Client> findClientsWithOpenShoppingCart() {
+
         return null;
     }
 
