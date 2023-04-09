@@ -11,12 +11,14 @@ public class Order {
     private Date data;
 
     private static List<Order> listOfOrders = new ArrayList<>();
+    private List<Product> listOfProducts;
 
     public Order(Date data) {
         this.id = nextId;
         nextId++;
         this.data = data;
         this.listOfOrders.add(this);
+//        listOfProducts = new ArrayList<>();
     }
 
     public int getId() {
@@ -35,7 +37,7 @@ public class Order {
         this.data = data;
     }
 
-    private List<Product> listOfProducts;
+
 
     @Override
     public String toString() {

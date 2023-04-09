@@ -35,6 +35,11 @@ public class ClientService implements ClientInterface{
 
     @Override
     public List<Client> findClientsWithOpenShoppingCart() {
+//        List<Client> listOfClientsWithOpenShoppingCart = new ArrayList<Client>();
+//        for (int c=0; c<Client.getListOfClients().size(); c++) {
+//            if(Client.getListOfClients().get(c).getShoppingCart().size() > 0)
+//                listOfCustomers.add(Client.getListOfClients().get(c));
+//        }
 
         return null;
     }
