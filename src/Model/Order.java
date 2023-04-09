@@ -11,14 +11,14 @@ public class Order {
     private Date data;
 
     private static List<Order> listOfOrders = new ArrayList<>();
-    private List<Product> listOfProducts;
+    private List<Product> listOfProductsForThisOrder;
 
     public Order(Date data) {
         this.id = nextId;
         nextId++;
         this.data = data;
         this.listOfOrders.add(this);
-//        listOfProducts = new ArrayList<>();
+        listOfProductsForThisOrder = new ArrayList<>();
     }
 
     public int getId() {
@@ -37,14 +37,18 @@ public class Order {
         this.data = data;
     }
 
+    public void addProductToThisOrder(Product product){
+        listOfProductsForThisOrder.add(product);
+        System.out.println("ListOfProductsOnThisOrder: " + listOfProductsForThisOrder);
 
+    }
 
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
                 ", data=" + data +
-                ", listOfProducts=" + listOfProducts +
+                ", listOfProducts=" + listOfProductsForThisOrder +
                 '}';
     }
 }

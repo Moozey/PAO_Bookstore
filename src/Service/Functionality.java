@@ -32,12 +32,9 @@ public class Functionality {
 
         Order order1 = new Order(new Date());
         Order order2 = new Order(new Date());
-        List<Order> listOfOrders = new ArrayList<Order>();
-        listOfOrders.add(order1);
-        listOfOrders.add(order2);
 
-        Client client1 = new Client("ana", "maria", "soseaua mea","ana@ana", "0766543987", order1, listOfOrders);
-        Client client2 = new Client("maria", "razvan", "soseaua noastra","noi2@ana", "0766543563", order2, listOfOrders);
+        Client client1 = new Client("ana", "maria", "soseaua mea","ana@ana", "0766543987");
+        Client client2 = new Client("maria", "razvan", "soseaua noastra","noi2@ana", "0766543563");
 
 //        System.out.println(client1);
 //        A static function doesn't depend on any object, so I can't call it by an object,
@@ -45,6 +42,13 @@ public class Functionality {
 //        System.out.println(client1.getListOfClients());  I CAN'T DO THIS
         System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAA");
 
+        Order order5 = new Order(new Date());
+        System.out.println("Testez addProductToShoppingCart");
+        order5.addProductToThisOrder(p1);
+        client1.setShoppingCart(order5);
+        System.out.println("Client 1 after shopping cart added" + client1);
+
+        System.out.println("---------AM TERMINAT FUNCTIONALITY----------");
     }
 
 
