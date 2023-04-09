@@ -2,6 +2,10 @@ package Service;
 
 import Model.*;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 public class Functionality {
     public void MyMethod() {
         Product p1 = new Product("bread", "a white product that we no longer eat", 3.99);
@@ -25,6 +29,22 @@ public class Functionality {
         band1.addPersonToBand(author1);
         System.out.println(band1.getListOfPersons());
         System.out.println(band1);
+
+        Order order1 = new Order(new Date());
+        Order order2 = new Order(new Date());
+        List<Order> listOfOrders = new ArrayList<Order>();
+        listOfOrders.add(order1);
+        listOfOrders.add(order2);
+
+        Client client1 = new Client("ana", "maria", "soseaua mea","ana@ana", "0766543987", order1, listOfOrders);
+        Client client2 = new Client("maria", "razvan", "soseaua noastra","noi2@ana", "0766543563", order2, listOfOrders);
+
+//        System.out.println(client1);
+//        A static function doesn't depend on any object, so I can't call it by an object,
+//              so I need to call it by the Class:
+//        System.out.println(client1.getListOfClients());  I CAN'T DO THIS
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAA");
+
     }
 
 

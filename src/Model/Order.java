@@ -5,10 +5,13 @@ import java.util.List;
 
 public class Order {
     private int id;
+
+    private static int nextId = 1;
     private Date data;
 
-    public Order(int id, Date data) {
-        this.id = id;
+    public Order(Date data) {
+        this.id = nextId;
+        nextId++;
         this.data = data;
     }
 

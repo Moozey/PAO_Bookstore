@@ -8,7 +8,10 @@ public class ClientService implements ClientInterface{
 
     @Override
     public Client findClientById(int id) {
-//        System.out.println();
+        for (int c=0; c<Client.getListOfClients().size(); c++) {
+            if(Client.getListOfClients().get(c).getId() == id)
+                return Client.getListOfClients().get(c);
+        }
         return null;
     }
 

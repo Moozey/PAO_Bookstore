@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Client extends Person{
@@ -7,6 +8,8 @@ public class Client extends Person{
     private String email;
     private String phoneNumber;
     private Order shoppingCart;
+    private static List<Client> listOfClients = new ArrayList<Client>() ;
+    private List<Order> pastOrders;
 
     public Client(String firstName, String lastName, String address, String email, String phoneNumber, Order shoppingCart, List<Order> pastOrders) {
         super(firstName, lastName);
@@ -15,6 +18,9 @@ public class Client extends Person{
         this.phoneNumber = phoneNumber;
         this.shoppingCart = shoppingCart;
         this.pastOrders = pastOrders;
+        this.listOfClients.add(this);
+        System.out.println("Vreau sa afisez lista");
+        System.out.println(listOfClients);
     }
 
     public String getAddress() {
@@ -48,18 +54,24 @@ public class Client extends Person{
     public void setShoppingCart(Order shoppingCart) {
         this.shoppingCart = shoppingCart;
     }
-
-    private List<Order> pastOrders;
+    public static List<Client> getListOfClients() {
+        return listOfClients;
+    }
 
     @Override
     public String toString() {
         return "Client{" +
-                "address='" + address + '\'' +
+                "id='" + this.getId() + '\'' +
+                ", firstName='" + this.getFirstName() + '\'' +
+                ", lastName='" + this.getLastName() + '\'' +
+                ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", shoppingCart=" + shoppingCart +
                 ", pastOrders=" + pastOrders +
                 '}';
     }
+
+
 }
 
