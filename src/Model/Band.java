@@ -18,4 +18,12 @@ public class Band {
     }
 
     private List<Person> listOfPersons;
+
+    @Override
+    public String toString() {
+        return "Band{" +
+                "bandName='" + bandName + '\'' +
+                ", listOfPersons=" + listOfPersons +
+                '}';
+    }
 }

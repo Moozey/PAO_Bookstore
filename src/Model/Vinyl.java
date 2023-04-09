@@ -30,4 +30,12 @@ public class Vinyl extends Product {
     public void setType(Type type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "Vinyl{" +
+                "band=" + band +
+                ", type=" + type +
+                '}';
+    }
 }

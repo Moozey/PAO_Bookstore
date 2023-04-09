@@ -1,12 +1,26 @@
 package Model;
 
 public class Author extends Person {
-    private Person person;
     private String country;
 
-    public Author(String firstName, String lastName, Person person, String country) {
+    public Author(String firstName, String lastName, String country) {
         super(firstName, lastName);
-        this.person = person;
         this.country = country;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                super.toString() +
+                "; country='" + country + '\'' +
+                '}';
     }
 }

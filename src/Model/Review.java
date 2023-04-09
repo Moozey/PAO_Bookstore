@@ -54,4 +54,15 @@ public class Review {
     public void setProductId(int productId) {
         this.productId = productId;
     }
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "id=" + id +
+                ", rating=" + rating +
+                ", description='" + description + '\'' +
+                ", clientId=" + clientId +
+                ", productId=" + productId +
+                '}';
+    }
 }

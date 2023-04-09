@@ -28,4 +28,13 @@ public class DVD extends Product {
     public void setType(Type type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "DVD{" +
+                "band=" + band +
+                ", type=" + type +
+                '}';
+    }
+
 }

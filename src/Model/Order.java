@@ -29,4 +29,13 @@ public class Order {
     }
 
     private List<Product> listOfProducts;
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", data=" + data +
+                ", listOfProducts=" + listOfProducts +
+                '}';
+    }
 }

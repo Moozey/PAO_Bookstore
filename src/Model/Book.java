@@ -38,4 +38,13 @@ public class Book extends Product {
     public void setPages(int pages) {
         this.pages = pages;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "author=" + author +
+                ", type=" + type +
+                ", pages=" + pages +
+                '}';
+    }
 }

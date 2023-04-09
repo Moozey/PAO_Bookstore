@@ -50,5 +50,16 @@ public class Client extends Person{
     }
 
     private List<Order> pastOrders;
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", shoppingCart=" + shoppingCart +
+                ", pastOrders=" + pastOrders +
+                '}';
+    }
 }
 
