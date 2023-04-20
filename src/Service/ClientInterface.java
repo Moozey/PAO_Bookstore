@@ -10,4 +10,8 @@ public interface ClientInterface {
     List<Client> findClientsByNumberOfOrders(int orders);
     List<Client> findClientsWithOpenShoppingCart();
 
+    void updateClientLastName(String lastName, Client client);
+    void updateClientAddress(String address, Client client);
+
+
 }

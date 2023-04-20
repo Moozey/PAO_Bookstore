@@ -2,12 +2,16 @@ package Service;
 
 import Model.*;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Functionality {
+
+
     public void MyMethod() {
+
         Product p1 = new Product("bread", "a white product that we no longer eat", 3.99);
         Product p2 = new Product( "creion", "tool to draw with", 1.05);
         System.out.println(p1);
@@ -49,7 +53,14 @@ public class Functionality {
         System.out.println("Client 1 after shopping cart added" + client1);
 
         System.out.println("---------AM TERMINAT FUNCTIONALITY----------");
-    }
+        System.out.println(Client.getListOfClients());
+        System.out.println("Am dat print la lista de clienti");
 
+//        creare instanta de clientService
+        ClientService clientService = new ClientService();
+        clientService.updateClientLastName("BLABLA", client1);
+
+        clientService.updateClientAddress("OLTULUI", client2);
+    }
 
 }

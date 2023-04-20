@@ -45,5 +45,16 @@ public class ClientService implements ClientInterface{
         return listOfClientsWithOpenShoppingCart;
     }
 
+    @Override
+    public void updateClientLastName(String lastName, Client client) {
+        client.setLastName(lastName);
+    }
+
+    @Override
+    public void updateClientAddress(String address, Client client) {
+        client.setAddress(address);
+
+    }
+
 
 }

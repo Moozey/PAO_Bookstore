@@ -16,10 +16,13 @@ public class Client extends Person{
         this.address = address;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.listOfClients.add(this);
+//        this.listOfClients.add(this);
+        addClientToList(this);
         System.out.println("listOfClients" + listOfClients);
     }
-
+    private void addClientToList(Client client) {
+        this.listOfClients.add(client);
+    }
     public String getAddress() {
         return address;
     }
