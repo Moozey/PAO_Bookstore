@@ -1,16 +1,24 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Person {
     private int id;
     private static int nextId = 1;
     private String firstName;
     private String lastName;
+    private static List<Person> listOfPersons = new ArrayList<Person>();
 
     public Person(String firstName, String lastName) {
         this.id = nextId;
         nextId++;
         this.firstName = firstName;
         this.lastName = lastName;
+        addPersonToList(this);
+    }
+    private void addPersonToList(Person person) {
+        this.listOfPersons.add(person);
     }
 
     public int getId() {
@@ -35,6 +43,14 @@ public class Person {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public static List<Person> getListOfPersons() {
+        return listOfPersons;
+    }
+
+    public static void setListOfPersons(List<Person> listOfPersons) {
+        Person.listOfPersons = listOfPersons;
     }
 
     @Override

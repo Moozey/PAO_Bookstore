@@ -5,13 +5,20 @@ import java.util.List;
 
 public class Band {
     private String bandName;
-    private List<Person> listOfPersons;
+    private List<Person> listOfPersons = new ArrayList<Person>();
+    private List<Band> listOfBands = new ArrayList<Band>();
 
     public Band(String bandName) {
         this.bandName = bandName;
-        this.listOfPersons = new ArrayList<Person>();
+//        this.listOfPersons = new ArrayList<Person>();
+        addBandToList(this);
     }
-
+    private void addBandToList(Band band){
+        this.listOfBands.add(band);
+    }
+    public List<Band> getListOfBands() {
+        return listOfBands;
+    }
     public String getBandName() {
         return bandName;
     }
@@ -21,7 +28,9 @@ public class Band {
     public List<Person> getListOfPersons() {
         return listOfPersons;
     }
-
+    public void setListOfPersons(List<Person> listOfPersons) {
+        this.listOfPersons = listOfPersons;
+    }
     public void addPersonToBand(Person personToBeAdded) {
         this.listOfPersons.add(personToBeAdded);
     }

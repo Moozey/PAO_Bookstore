@@ -39,8 +39,16 @@ public class Order {
 
     public void addProductToThisOrder(Product product){
         listOfProductsForThisOrder.add(product);
-        System.out.println("ListOfProductsOnThisOrder: " + listOfProductsForThisOrder);
+//        System.out.println("ListOfProductsOnThisOrder: " + listOfProductsForThisOrder);
 
+    }
+
+    public static List<Order> getListOfOrders() {
+        return listOfOrders;
+    }
+
+    public List<Product> getListOfProductsForThisOrder() {
+        return listOfProductsForThisOrder;
     }
 
     @Override

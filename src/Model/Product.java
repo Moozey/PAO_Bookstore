@@ -1,11 +1,15 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Product {
     private int id;
     private static int nextId = 1;
     private String title;
     private String description;
     private double price;
+    private static List<Product> listOfProducts = new ArrayList<Product>();
 
 
     public Product(String title, String description, double price) {
@@ -14,8 +18,11 @@ public class Product {
         this.title = title;
         this.description = description;
         this.price = price;
+        addProductToList(this);
     }
-
+    public void addProductToList(Product product){
+        this.listOfProducts.add(product);
+    }
     public int getId() {
         return id;
     }
@@ -46,6 +53,10 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public static List<Product> getListOfProducts() {
+        return listOfProducts;
     }
 
     @Override

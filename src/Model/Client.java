@@ -18,7 +18,7 @@ public class Client extends Person{
         this.phoneNumber = phoneNumber;
 //        this.listOfClients.add(this);
         addClientToList(this);
-        System.out.println("listOfClients" + listOfClients);
+//        System.out.println("listOfClients" + listOfClients);
     }
     private void addClientToList(Client client) {
         this.listOfClients.add(client);

@@ -7,6 +7,7 @@ public class Book extends Product {
     private Author author;
     private Type type;
     private int pages;
+    private static List<Book> listOfBooks = new ArrayList<Book>();
 
     public Book(String title, String description, double price, Author author, Type type, int pages) {
         super(title, description, price);
@@ -15,6 +16,9 @@ public class Book extends Product {
         this.pages = pages;
     }
 
+    public void addBookToList(Book book){
+        this.listOfBooks.add(book);
+    }
     public Author getAuthor() {
         return author;
     }

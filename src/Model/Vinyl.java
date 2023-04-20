@@ -9,12 +9,18 @@ public class Vinyl extends Product {
     private Band band;
     private Type type;
 
+    private List<Vinyl> listOfVinyls = new ArrayList<Vinyl>();
+
     public Vinyl(String title, String description, double price, Band band, Type type) {
         super(title, description, price);
         this.band = band;
         this.type = type;
+        addVinylToList(this);
     }
 
+    public void addVinylToList(Vinyl vinyl){
+        this.listOfVinyls.add(vinyl);
+    }
     public Band getBand() {
         return band;
     }
@@ -29,6 +35,10 @@ public class Vinyl extends Product {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    public List<Vinyl> getListOfVinyls() {
+        return listOfVinyls;
     }
 
     @Override
