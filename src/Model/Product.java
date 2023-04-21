@@ -3,7 +3,7 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Product {
+public class Product implements Comparable<Product> {
     private int id;
     private static int nextId = 1;
     private String title;
@@ -59,6 +59,14 @@ public class Product {
         return listOfProducts;
     }
 
+    public static Product findProductByName(String name) {
+        for (int i = 0; i < listOfProducts.size(); i++) {
+            if (listOfProducts.get(i).getTitle() == name)
+                return listOfProducts.get(i);
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -67,5 +75,24 @@ public class Product {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Product o) {
+        if (this.price > o.price) {
+
+            // if current object is greater,then return 1
+            return 1;
+        }
+        else if (this.price < o.price) {
+
+            // if current object is greater,then return -1
+            return -1;
+        }
+        else {
+
+            // if current object is equal to o,then return 0
+            return 0;
+        }
     }
 }

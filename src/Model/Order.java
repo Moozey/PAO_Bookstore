@@ -19,6 +19,12 @@ public class Order {
         this.data = data;
         addOrderToList(this);
     }
+    public Order(){
+        this.id = nextId;
+        nextId++;
+        this.data = new Date();
+        addOrderToList(this);
+    }
     public void addOrderToList(Order order){
         this.listOfOrders.add(order);
     }

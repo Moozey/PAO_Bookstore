@@ -2,17 +2,34 @@ package Service;
 
 import Model.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-public class ProductService implements ProductInterface{
+import static Model.Product.findProductByName;
+import static Model.Product.getListOfProducts;
 
+public class ProductService implements ProductInterface{
     @Override
     public List<Product> listProductsOrderedByPrice() {
+        List<Product> listOfOrderedProduct = new ArrayList<>(getListOfProducts());
+        System.out.println("Before sorting " + listOfOrderedProduct);
+        Collections.sort(listOfOrderedProduct);
+        System.out.println("After sorting " + listOfOrderedProduct);
         return null;
     }
-
     @Override
-    public List<Client> showClientsWhoOrderedProduct() {
+    public List<Client> showClientsWhoOrderedProduct(String productName) {
+        List<Client> listOfClients = Client.getListOfClients();
+        for(int c=0; c < listOfClients.size(); c++) {
+            List<Order> listOfOrders = listOfClients.get(c).getPastOrders();
+            for (int o = 0; o < listOfOrders.size(); o++) {
+                List<Product> listOfProducts = listOfOrders.get(o).getListOfProductsForThisOrder();
+                if(listOfProducts.contains(findProductByName(productName)))
+                    System.out.println("Client " + listOfClients.get(c).getId() + " Order " + listOfOrders.get(o).getId() + " " + listOfOrders.get(o));
+            }
+        }
         return null;
     }
 
@@ -33,17 +50,17 @@ public class ProductService implements ProductInterface{
 
     @Override
     public Product findProductByTitle(String title) {
-        for (int p=0; p<Product.getListOfProducts().size(); p++){
-            if(Product.getListOfProducts().get(p).getTitle() == title)
-                return Product.getListOfProducts().get(p);
+        for (int p = 0; p< getListOfProducts().size(); p++){
+            if(getListOfProducts().get(p).getTitle() == title)
+                return getListOfProducts().get(p);
         }
         return null;
     }
     @Override
     public void deleteProductByName(String title) {
-        for (int p=0; p<Product.getListOfProducts().size(); p++){
-            if(Product.getListOfProducts().get(p).getTitle() == title)
-                Product.getListOfProducts().remove(p);
+        for (int p = 0; p< getListOfProducts().size(); p++){
+            if(getListOfProducts().get(p).getTitle() == title)
+                getListOfProducts().remove(p);
         }
 
     }

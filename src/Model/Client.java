@@ -9,7 +9,7 @@ public class Client extends Person{
     private String phoneNumber;
     private Order shoppingCart;
     private static List<Client> listOfClients = new ArrayList<Client>();
-    private List<Order> pastOrders;
+    private List<Order> pastOrders = new ArrayList<>();
 
     public Client(String firstName, String lastName, String address, String email, String phoneNumber) {
         super(firstName, lastName);
@@ -62,7 +62,10 @@ public class Client extends Person{
 //        System.out.println("getPastOrders " + this.getId() + pastOrders);
         return pastOrders;
     }
-
+    public void placeOrder(){
+        this.pastOrders.add(this.shoppingCart);
+        shoppingCart = null;
+    }
     @Override
     public String toString() {
         return "Client{" +

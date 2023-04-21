@@ -13,6 +13,7 @@ public class ProductFunctionality {
         testingOrderOperations();
         testingProductOperations();
         testingProductFind("bread");
+        testingOrderingProductsByPrice();
     }
     public void testingProductInitialization(){
         Product p1 = new Product("bread", "a white product that we no longer eat", 3.99);
@@ -44,5 +45,10 @@ public class ProductFunctionality {
         ProductService productServiceTest = new ProductService();
         System.out.println("Product with title " + title + ": " + productServiceTest.findProductByTitle(title));
     }
+    public void testingOrderingProductsByPrice(){
+        ProductService productServiceTest = new ProductService();
+        productServiceTest.listProductsOrderedByPrice();
+    }
+
 
 }

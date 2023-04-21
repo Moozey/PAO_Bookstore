@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProductInterface {
     List<Product> listProductsOrderedByPrice();
-    List<Client> showClientsWhoOrderedProduct();
+    List<Client> showClientsWhoOrderedProduct(String Title);
     List<Vinyl> showTheMostSoldVinyls();
     List<Book> showTheMostSoldBooks();
     List<DVD> showTheMostSoldDvds();
