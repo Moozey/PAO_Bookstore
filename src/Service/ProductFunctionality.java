@@ -11,6 +11,8 @@ public class ProductFunctionality {
         testingProductInitialization();
         testingOrderInitialization();
         testingOrderOperations();
+        testingProductOperations();
+        testingProductFind("bread");
     }
     public void testingProductInitialization(){
         Product p1 = new Product("bread", "a white product that we no longer eat", 3.99);
@@ -30,6 +32,17 @@ public class ProductFunctionality {
         order.addProductToThisOrder(product);
         client.setShoppingCart(order);
         System.out.println("Client after shopping cart added: " + client);
+    }
+    public void testingProductOperations(){
+        Product p3 = new Product("Vaslind spre ceruri", "Carte de povesti", 25);
+        System.out.println("List of products:  " + Product.getListOfProducts());
+        ProductService productServiceTest = new ProductService();
+        productServiceTest.deleteProductByName("Vaslind spre ceruri");
+        System.out.println("List of products after delete:  " + Product.getListOfProducts());
+    }
+    public void testingProductFind(String title){
+        ProductService productServiceTest = new ProductService();
+        System.out.println("Product with title " + title + ": " + productServiceTest.findProductByTitle(title));
     }
 
 }
