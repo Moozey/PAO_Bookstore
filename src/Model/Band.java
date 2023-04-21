@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Band {
     private String bandName;
-    private List<Person> listOfPersons = new ArrayList<Person>();
-    private List<Band> listOfBands = new ArrayList<Band>();
+    private List<Person> bandMembers = new ArrayList<Person>();
+    private static List<Band> listOfBands = new ArrayList<Band>();
 
     public Band(String bandName) {
         this.bandName = bandName;
@@ -26,20 +26,20 @@ public class Band {
         this.bandName = bandName;
     }
     public List<Person> getListOfPersons() {
-        return listOfPersons;
+        return bandMembers;
     }
     public void setListOfPersons(List<Person> listOfPersons) {
-        this.listOfPersons = listOfPersons;
+        this.bandMembers = listOfPersons;
     }
     public void addPersonToBand(Person personToBeAdded) {
-        this.listOfPersons.add(personToBeAdded);
+        this.bandMembers.add(personToBeAdded);
     }
 
     @Override
     public String toString() {
         return "Band{" +
                 "bandName='" + bandName + '\'' +
-                ", listOfPersons=" + listOfPersons +
+                ", listOfPersons=" + bandMembers +
                 '}';
     }
 }

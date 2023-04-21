@@ -1,11 +1,15 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Review {
     private int id;
     private int rating;
     private String description;
     private int clientId;
     private int productId;
+    private List<Review> listOfReviews = new ArrayList<>();
 
     public Review(int id, int rating, String description, int clientId, int productId) {
         this.id = id;
@@ -53,6 +57,10 @@ public class Review {
 
     public void setProductId(int productId) {
         this.productId = productId;
+    }
+
+    public List<Review> getListOfReviews() {
+        return listOfReviews;
     }
 
     @Override

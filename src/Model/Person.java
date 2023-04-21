@@ -49,10 +49,6 @@ public class Person {
         return listOfPersons;
     }
 
-    public static void setListOfPersons(List<Person> listOfPersons) {
-        Person.listOfPersons = listOfPersons;
-    }
-
     @Override
     public String toString() {
         return "Person{" +

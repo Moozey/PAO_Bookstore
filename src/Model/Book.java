@@ -14,6 +14,7 @@ public class Book extends Product {
         this.author = author;
         this.type = type;
         this.pages = pages;
+        addBookToList(this);
     }
 
     public void addBookToList(Book book){
@@ -41,6 +42,10 @@ public class Book extends Product {
 
     public void setPages(int pages) {
         this.pages = pages;
+    }
+
+    public static List<Book> getListOfBooks() {
+        return listOfBooks;
     }
 
     @Override

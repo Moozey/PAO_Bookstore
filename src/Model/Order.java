@@ -11,16 +11,17 @@ public class Order {
     private Date data;
 
     private static List<Order> listOfOrders = new ArrayList<>();
-    private List<Product> listOfProductsForThisOrder;
+    private List<Product> listOfProductsForThisOrder = new ArrayList<>();
 
     public Order(Date data) {
         this.id = nextId;
         nextId++;
         this.data = data;
-        this.listOfOrders.add(this);
-        listOfProductsForThisOrder = new ArrayList<>();
+        addOrderToList(this);
     }
-
+    public void addOrderToList(Order order){
+        this.listOfOrders.add(order);
+    }
     public int getId() {
         return id;
     }
