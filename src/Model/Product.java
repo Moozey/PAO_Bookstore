@@ -76,7 +76,13 @@ public class Product implements Comparable<Product> {
                 ", price=" + price +
                 '}';
     }
-
+    public String printIdAndTitle() {
+        return "(" +
+                "id: " + this.getId() +
+                ", title: " + this.getTitle() +
+                ", class: " + this.getClass().getSimpleName() +
+                ')';
+    }
     @Override
     public int compareTo(Product o) {
         if (this.price > o.price) {

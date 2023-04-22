@@ -1,8 +1,6 @@
 package Service;
 
-import Model.Client;
-import Model.Order;
-import Model.Product;
+import Model.*;
 
 import java.util.Date;
 
@@ -14,6 +12,7 @@ public class ProductFunctionality {
         testingProductOperations();
         testingProductFind("bread");
         testingOrderingProductsByPrice();
+        testingVinylsInitialization();
     }
     public void testingProductInitialization(){
         Product p1 = new Product("bread", "a white product that we no longer eat", 3.99);
@@ -49,6 +48,13 @@ public class ProductFunctionality {
         ProductService productServiceTest = new ProductService();
         productServiceTest.listProductsOrderedByPrice();
     }
+    public void testingVinylsInitialization(){
+        Band nirvana = Band.findBandByName("Nirvana");
+        Band MJ = new Band("MichaelJackson");
+        Type years70 = new Type("70's");
+        Vinyl vinylOfNirvana = new Vinyl("Nevermind", "Very nice album", 140, nirvana, years70);
+        Vinyl vinylOfMJ = new Vinyl("Thriller", "Very good album", 150, MJ, years70);
 
+    }
 
 }

@@ -34,6 +34,13 @@ public class Band {
     public void addPersonToBand(Person personToBeAdded) {
         this.bandMembers.add(personToBeAdded);
     }
+    public static Band findBandByName(String name) {
+        for (int i = 0; i < listOfBands.size(); i++) {
+            if (listOfBands.get(i).getBandName() == name)
+                return listOfBands.get(i);
+        }
+        return null;
+    }
 
     @Override
     public String toString() {

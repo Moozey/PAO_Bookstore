@@ -2,10 +2,7 @@ package Service;
 
 import Model.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static Model.Product.findProductByName;
 import static Model.Product.getListOfProducts;
@@ -39,8 +36,28 @@ public class ProductService implements ProductInterface{
 //    daca are, adaug vinilurile intr-o lista de showTheMostVinyls si
 //    contorizez cate viniluri din fiecare vinil au fost vandute si le ord descrescator
     @Override
-    public List<Vinyl> showTheMostSoldVinyls() {
-        return null;
+    public Map<String, Integer> showTheMostSoldVinyls() {
+        System.out.println("//////////");
+        Map<String, Integer>  listOfTheMostSoldVinyls = new HashMap<String, Integer>();
+        for(int clientId=0; clientId<Client.getListOfClients().size(); clientId++)
+        {
+            Client currentClient = Client.getListOfClients().get(clientId);
+            for(int orderId=0; orderId<currentClient.getPastOrders().size(); orderId++)
+            {
+                Order currentOrder = currentClient.getPastOrders().get(orderId);
+                for(int productId=0; productId<currentOrder.getListOfProductsForThisOrder().size(); productId++){
+                    Product currentProduct = currentOrder.getListOfProductsForThisOrder().get(productId);
+                    if(currentProduct instanceof Vinyl) {
+                        if(listOfTheMostSoldVinyls.containsKey(currentProduct.getTitle()))
+                            listOfTheMostSoldVinyls.put(currentProduct.getTitle(), listOfTheMostSoldVinyls.get(currentProduct.getTitle())+1);
+                        else
+                            listOfTheMostSoldVinyls.put(currentProduct.getTitle(), 1);
+                    }
+                }
+            }
+
+        }
+        return listOfTheMostSoldVinyls;
     }
 
     @Override
@@ -77,5 +94,17 @@ public class ProductService implements ProductInterface{
         }
         System.out.println();
     }
+
+    @Override
+    public void printListOfProductsOnlyIdAndTitle() {
+        List<Product> productList = Product.getListOfProducts();
+        for(int productId=0; productId<productList.size(); productId++ ){
+            Product currentProduct = productList.get(productId);
+            System.out.print(currentProduct.printIdAndTitle());
+        }
+        System.out.println();
+    }
+
+
 }
 

@@ -10,6 +10,7 @@ import java.util.List;
 public class OrderFunctionality {
     public void testingOrderFunctionality(){
         testingOrderInitialization();
+        testingVinylOperations();
     }
     public void testingOrderInitialization(){
         Client client = new Client("Ionut", "Voinea", "Soseaua Colentina", "ionut@ionut.com", "0765432987");
@@ -24,18 +25,32 @@ public class OrderFunctionality {
         o2.addProductToThisOrder(product);
         o2.addProductToThisOrder(product1);
         o2.addProductToThisOrder(product2);
+        o2.addProductToThisOrder(Product.findProductByName("Nevermind"));
+        o2.addProductToThisOrder(Product.findProductByName("Thriller"));
+        o1.addProductToThisOrder(Product.findProductByName("Thriller"));
         client.setShoppingCart(o1);
         client2.setShoppingCart(o2);
-        System.out.println("Client has shopping cart: " + client);
-        System.out.println("Client placed order " + client.getShoppingCart());
+        System.out.println("-----------------");
+        System.out.println("Client has shopping cart: " + client2);
+        System.out.println("Client placed order " + client2.getShoppingCart());
         client.placeOrder();
         client2.placeOrder();
-        System.out.println("Client after placing order " + client);
+        System.out.println("Client after placing order " + client2);
+
         ProductService productService = new ProductService();
         String telefon = "telefon";
         String tableta = "tableta";
         List<Client> listOfClientsWhoOrderedProductX = productService.showClientsWhoOrderedProduct(telefon);
         System.out.print("List of clients who ordered product " + telefon + " : ");
         productService.printClientsJustIdAndName(listOfClientsWhoOrderedProductX);
+        System.out.println("Current List Of Products: " + Product.getListOfProducts());
+        System.out.print("Current list of products printed beautifully: ");
+        productService.printListOfProductsOnlyIdAndTitle();
+
     }
+    public void testingVinylOperations(){
+        ProductService productServiceTest = new ProductService();
+        System.out.println("CELE MAI VANDUTE VINILURI: " + productServiceTest.showTheMostSoldVinyls());
+    }
+
 }
