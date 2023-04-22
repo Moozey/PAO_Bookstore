@@ -1,5 +1,6 @@
 package Service;
 
+import Model.Book;
 import Model.Client;
 import Model.Order;
 import Model.Product;
@@ -10,7 +11,7 @@ import java.util.List;
 public class OrderFunctionality {
     public void testingOrderFunctionality(){
         testingOrderInitialization();
-        testingVinylOperations();
+        testingTheMostSoldProductFunctions();
     }
     public void testingOrderInitialization(){
         Client client = new Client("Ionut", "Voinea", "Soseaua Colentina", "ionut@ionut.com", "0765432987");
@@ -20,14 +21,20 @@ public class OrderFunctionality {
         Product product2 = new Product("televizor", "Dimenisune 10 cm", 3000);
         Order o1 = new Order();
         Order o2 = new Order();
+
         o1.addProductToThisOrder(product);
         o1.addProductToThisOrder(product1);
         o2.addProductToThisOrder(product);
         o2.addProductToThisOrder(product1);
         o2.addProductToThisOrder(product2);
+        o1.addProductToThisOrder(Product.findProductByName("Thriller"));
+        o1.addProductToThisOrder(Product.findProductByName("Pe aripile vantului"));
         o2.addProductToThisOrder(Product.findProductByName("Nevermind"));
         o2.addProductToThisOrder(Product.findProductByName("Thriller"));
-        o1.addProductToThisOrder(Product.findProductByName("Thriller"));
+        o2.addProductToThisOrder(Product.findProductByName("Pe aripile vantului"));
+        o2.addProductToThisOrder(Product.findProductByName("Poezii de Mihai Eminescu"));
+
+
         client.setShoppingCart(o1);
         client2.setShoppingCart(o2);
         System.out.println("-----------------");
@@ -48,9 +55,11 @@ public class OrderFunctionality {
         productService.printListOfProductsOnlyIdAndTitle();
 
     }
-    public void testingVinylOperations(){
+    public void testingTheMostSoldProductFunctions(){
         ProductService productServiceTest = new ProductService();
         System.out.println("CELE MAI VANDUTE VINILURI: " + productServiceTest.showTheMostSoldVinyls());
+        System.out.println("CELE MAI VANDUTE CARTI: " + productServiceTest.showTheMostSoldBooks());
+        System.out.println("CELE MAI VANDUTE DVD-URI: " + productServiceTest.showTheMostSoldDvds());
     }
 
 }

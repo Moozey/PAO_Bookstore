@@ -10,8 +10,8 @@ public interface ProductInterface {
     List<Product> listProductsOrderedByPrice();
     List<Client> showClientsWhoOrderedProduct(String Title);
     Map<String, Integer> showTheMostSoldVinyls();
-    List<Book> showTheMostSoldBooks();
-    List<DVD> showTheMostSoldDvds();
+    Map<String, Integer> showTheMostSoldBooks();
+    Map<String, Integer> showTheMostSoldDvds();
     Product findProductByTitle(String title);
     void deleteProductByName(String title);
 

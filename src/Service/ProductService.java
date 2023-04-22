@@ -61,13 +61,53 @@ public class ProductService implements ProductInterface{
     }
 
     @Override
-    public List<Book> showTheMostSoldBooks() {
-        return null;
+    public Map<String, Integer> showTheMostSoldBooks() {
+        System.out.println("//////////");
+        Map<String, Integer>  listOfTheMostSoldBooks = new HashMap<String, Integer>();
+        for(int clientId=0; clientId<Client.getListOfClients().size(); clientId++)
+        {
+            Client currentClient = Client.getListOfClients().get(clientId);
+            for(int orderId=0; orderId<currentClient.getPastOrders().size(); orderId++)
+            {
+                Order currentOrder = currentClient.getPastOrders().get(orderId);
+                for(int productId=0; productId<currentOrder.getListOfProductsForThisOrder().size(); productId++){
+                    Product currentProduct = currentOrder.getListOfProductsForThisOrder().get(productId);
+                    if(currentProduct instanceof Book) {
+                        if(listOfTheMostSoldBooks.containsKey(currentProduct.getTitle()))
+                            listOfTheMostSoldBooks.put(currentProduct.getTitle(), listOfTheMostSoldBooks.get(currentProduct.getTitle())+1);
+                        else
+                            listOfTheMostSoldBooks.put(currentProduct.getTitle(), 1);
+                    }
+                }
+            }
+
+        }
+        return listOfTheMostSoldBooks;
     }
 
     @Override
-    public List<DVD> showTheMostSoldDvds() {
-        return null;
+    public Map<String, Integer> showTheMostSoldDvds() {
+        System.out.println("//////////");
+        Map<String, Integer>  listOfTheMostSoldDvds = new HashMap<String, Integer>();
+        for(int clientId=0; clientId<Client.getListOfClients().size(); clientId++)
+        {
+            Client currentClient = Client.getListOfClients().get(clientId);
+            for(int orderId=0; orderId<currentClient.getPastOrders().size(); orderId++)
+            {
+                Order currentOrder = currentClient.getPastOrders().get(orderId);
+                for(int productId=0; productId<currentOrder.getListOfProductsForThisOrder().size(); productId++){
+                    Product currentProduct = currentOrder.getListOfProductsForThisOrder().get(productId);
+                    if(currentProduct instanceof DVD) {
+                        if(listOfTheMostSoldDvds.containsKey(currentProduct.getTitle()))
+                            listOfTheMostSoldDvds.put(currentProduct.getTitle(), listOfTheMostSoldDvds.get(currentProduct.getTitle())+1);
+                        else
+                            listOfTheMostSoldDvds.put(currentProduct.getTitle(), 1);
+                    }
+                }
+            }
+
+        }
+        return listOfTheMostSoldDvds;
     }
 
     @Override

@@ -13,6 +13,7 @@ public class ProductFunctionality {
         testingProductFind("bread");
         testingOrderingProductsByPrice();
         testingVinylsInitialization();
+        testingBooksInitialization();
     }
     public void testingProductInitialization(){
         Product p1 = new Product("bread", "a white product that we no longer eat", 3.99);
@@ -55,6 +56,14 @@ public class ProductFunctionality {
         Vinyl vinylOfNirvana = new Vinyl("Nevermind", "Very nice album", 140, nirvana, years70);
         Vinyl vinylOfMJ = new Vinyl("Thriller", "Very good album", 150, MJ, years70);
 
+    }
+    public void testingBooksInitialization(){
+        Author author1 = new Author("Margaret", "Mitchell", "Georgia");
+        Author author2 = new Author("Mihai", "Eminescu", "Romania");
+        Type novel = new Type("novel");
+        Type poem = new Type("poem");
+        Book book1 = new Book("Pe aripile vantului", "am citit cartea", 25, author1, novel,300);
+        Book book2 = new Book("Poezii de Mihai Eminescu", "Multe poezii", 35, author2, poem,150);
     }
 
 }
