@@ -5,6 +5,7 @@ import Model.Order;
 import Model.Product;
 
 import java.util.Date;
+import java.util.List;
 
 public class OrderFunctionality {
     public void testingOrderFunctionality(){
@@ -31,6 +32,10 @@ public class OrderFunctionality {
         client2.placeOrder();
         System.out.println("Client after placing order " + client);
         ProductService productService = new ProductService();
-        productService.showClientsWhoOrderedProduct("telefon");
+        String telefon = "telefon";
+        String tableta = "tableta";
+        List<Client> listOfClientsWhoOrderedProductX = productService.showClientsWhoOrderedProduct(telefon);
+        System.out.print("List of clients who ordered product " + telefon + " : ");
+        productService.printClientsJustIdAndName(listOfClientsWhoOrderedProductX);
     }
 }

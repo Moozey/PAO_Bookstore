@@ -14,4 +14,6 @@ public interface ProductInterface {
     Product findProductByTitle(String title);
     void deleteProductByName(String title);
 
+    void printClientsJustIdAndName(List<Client> listToPrint);
+
 }

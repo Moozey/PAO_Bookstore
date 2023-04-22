@@ -66,9 +66,17 @@ public class Client extends Person{
         this.pastOrders.add(this.shoppingCart);
         shoppingCart = null;
     }
+
+    public static Client findClientByName(String lastName, String firstName) {
+        for (int i = 0; i < listOfClients.size(); i++) {
+            if (listOfClients.get(i).getLastName() == lastName && listOfClients.get(i).getFirstName() == firstName)
+                return listOfClients.get(i);
+        }
+        return null;
+    }
     @Override
     public String toString() {
-        return "Client{" +
+        return "ClientFromToString{" +
                 "id='" + this.getId() + '\'' +
                 ", firstName='" + this.getFirstName() + '\'' +
                 ", lastName='" + this.getLastName() + '\'' +
@@ -79,7 +87,17 @@ public class Client extends Person{
                 ", pastOrders=" + pastOrders +
                 '}';
     }
-
-
+    public String printIdFirstNameLastName() {
+        return "(" +
+                "id: " + this.getId() +
+                ", name: " + this.getFirstName() + " " + this.getLastName()+
+                ')';
+    }
+    public String beautyPrintJustIdAndEmail() {
+        return "ClientFrombeautyPrintJustIdAndEmail{" +
+                "id='" + this.getId() + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
 

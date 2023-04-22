@@ -22,15 +22,16 @@ public class ProductService implements ProductInterface{
     @Override
     public List<Client> showClientsWhoOrderedProduct(String productName) {
         List<Client> listOfClients = Client.getListOfClients();
+        List<Client> listOfClientsWhoOrderedProduct = new ArrayList<>();
         for(int c=0; c < listOfClients.size(); c++) {
             List<Order> listOfOrders = listOfClients.get(c).getPastOrders();
             for (int o = 0; o < listOfOrders.size(); o++) {
                 List<Product> listOfProducts = listOfOrders.get(o).getListOfProductsForThisOrder();
                 if(listOfProducts.contains(findProductByName(productName)))
-                    System.out.println("Client " + listOfClients.get(c).getId() + " Order " + listOfOrders.get(o).getId() + " " + listOfOrders.get(o));
+                    listOfClientsWhoOrderedProduct.add(listOfClients.get(c));
             }
         }
-        return null;
+        return listOfClientsWhoOrderedProduct;
     }
 
     @Override
@@ -63,6 +64,14 @@ public class ProductService implements ProductInterface{
                 getListOfProducts().remove(p);
         }
 
+    }
+    @Override
+    public void printClientsJustIdAndName(List<Client> listToPrint) {
+        for (int idClient = 0; idClient < listToPrint.size(); idClient++) {
+            Client currentClient = listToPrint.get(idClient);
+            System.out.print(currentClient.printIdFirstNameLastName());
+        }
+        System.out.println();
     }
 }
 

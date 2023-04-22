@@ -1,9 +1,8 @@
 package Service;
 
-import Model.Author;
-import Model.Band;
-import Model.Client;
-import Model.Person;
+import Model.*;
+
+import java.util.List;
 
 public class PersonFunctionality {
 
@@ -70,5 +69,14 @@ public class PersonFunctionality {
 
     public void printListOfClients() {
         System.out.println("List of clients: " + Client.getListOfClients());
+    }
+
+
+    public List<Order> findOrdersOfClient(String lastName, String firstName){
+        Client client = Client.findClientByName(lastName,firstName);
+        for(int o=0; o<client.getPastOrders().size(); o++){
+            return client.getPastOrders();
+        }
+        return null;
     }
 }
