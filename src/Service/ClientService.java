@@ -40,8 +40,6 @@ public class ClientService implements ClientInterface{
             if(Client.getListOfClients().get(c).getShoppingCart() != null)
                 listOfClientsWithOpenShoppingCart.add(Client.getListOfClients().get(c));
         }
-
-
         return listOfClientsWithOpenShoppingCart;
     }
 

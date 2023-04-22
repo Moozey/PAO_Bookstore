@@ -80,18 +80,12 @@ public class Product implements Comparable<Product> {
     @Override
     public int compareTo(Product o) {
         if (this.price > o.price) {
-
-            // if current object is greater,then return 1
             return 1;
         }
         else if (this.price < o.price) {
-
-            // if current object is greater,then return -1
             return -1;
         }
         else {
-
-            // if current object is equal to o,then return 0
             return 0;
         }
     }

@@ -9,7 +9,7 @@ public class Vinyl extends Product {
     private Band band;
     private Type type;
 
-    private List<Vinyl> listOfVinyls = new ArrayList<Vinyl>();
+    private static List<Vinyl> listOfVinyls = new ArrayList<Vinyl>();
 
     public Vinyl(String title, String description, double price, Band band, Type type) {
         super(title, description, price);
