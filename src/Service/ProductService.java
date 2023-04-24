@@ -57,7 +57,19 @@ public class ProductService implements ProductInterface{
             }
 
         }
-        return listOfTheMostSoldVinyls;
+        List<Map.Entry<String, Integer>> listToBeSorted = new ArrayList<>(listOfTheMostSoldVinyls.entrySet());
+        Collections.sort(listToBeSorted, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+        LinkedHashMap<String, Integer> sortedListOfTheMostSoldVinyls = new LinkedHashMap<>();
+        for (Map.Entry<String, Integer> entry : listToBeSorted) {
+            sortedListOfTheMostSoldVinyls.put(entry.getKey(), entry.getValue());
+        }
+
+        return sortedListOfTheMostSoldVinyls;
     }
 
     @Override
@@ -82,7 +94,19 @@ public class ProductService implements ProductInterface{
             }
 
         }
-        return listOfTheMostSoldBooks;
+        List<Map.Entry<String, Integer>> listToBeSorted = new ArrayList<>(listOfTheMostSoldBooks.entrySet());
+        Collections.sort(listToBeSorted, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+        LinkedHashMap<String, Integer> sortedListOfTheMostSoldBooks = new LinkedHashMap<>();
+        for (Map.Entry<String, Integer> entry : listToBeSorted) {
+            sortedListOfTheMostSoldBooks.put(entry.getKey(), entry.getValue());
+        }
+
+        return sortedListOfTheMostSoldBooks;
     }
 
     @Override
@@ -107,7 +131,19 @@ public class ProductService implements ProductInterface{
             }
 
         }
-        return listOfTheMostSoldDvds;
+        List<Map.Entry<String, Integer>> listToBeSorted = new ArrayList<>(listOfTheMostSoldDvds.entrySet());
+        Collections.sort(listToBeSorted, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+        LinkedHashMap<String, Integer> sortedListOfTheMostSoldDvds = new LinkedHashMap<>();
+        for (Map.Entry<String, Integer> entry : listToBeSorted) {
+            sortedListOfTheMostSoldDvds.put(entry.getKey(), entry.getValue());
+        }
+
+        return sortedListOfTheMostSoldDvds;
     }
 
     @Override
