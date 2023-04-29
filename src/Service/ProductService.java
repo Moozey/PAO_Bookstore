@@ -30,11 +30,6 @@ public class ProductService implements ProductInterface{
         }
         return listOfClientsWhoOrderedProduct;
     }
-
-//    trec prin toti clientii, dupa trec prin fiecare pastOrder al clientului curent
-//    si verific daca are in pastOrder produse de tipul "vinil";
-//    daca are, adaug vinilurile intr-o lista de showTheMostVinyls si
-//    contorizez cate viniluri din fiecare vinil au fost vandute si le ord descrescator
     @Override
     public Map<String, Integer> showTheMostSoldVinyls() {
         System.out.println("//////////");
