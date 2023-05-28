@@ -5,8 +5,13 @@ public class Main {
         PersonFunctionality personService = new PersonFunctionality();
         ProductFunctionality productService = new ProductFunctionality();
         OrderFunctionality orderFunctionality = new OrderFunctionality();
+
         personService.testingPersonFunctionality();
         productService.testingProductFunctionality();
         orderFunctionality.testingOrderFunctionality();
+
+        JDBC jdbc = new JDBC();
+        jdbc.connectDB();
+
     }
 }
