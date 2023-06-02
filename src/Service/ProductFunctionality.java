@@ -82,4 +82,16 @@ public class ProductFunctionality {
         jdbc.getAllBooks();
     }
 
+    public void testingReviewing(){
+        Client client1 = new Client("Alma", "Ionescu", "soseaua virtutii","alma@yahoo.com", "0766933987");
+        Product product1 = new Product("Sweet Alabama", "O melodie frumoasa", 25.78);
+
+        JDBC_REVIEW jdbc_review = new JDBC_REVIEW();
+        Review review1 = new Review(10, "Imi place super mult", client1.getId(), product1.getId() );
+        jdbc_review.createReview(review1, product1.getId());
+//        jdbc_review.deleteReview(review1);
+        jdbc_review.updateReview(review1, "Wowow, asta e super nice!");
+        jdbc_review.getAllReviews();
+    }
+
 }

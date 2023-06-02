@@ -9,6 +9,7 @@ public class Main {
         personService.testingPersonFunctionality();
         productService.testingProductFunctionality();
         orderFunctionality.testingOrderFunctionality();
+        productService.testingReviewing();
 
 
         JDBC_BOOK jdbc_book = new JDBC_BOOK();
@@ -17,6 +18,11 @@ public class Main {
         JDBC_AUTHOR jdbc_author = new JDBC_AUTHOR();
         jdbc_author.closeConnection();
 
+        JDBC_VINYL jdbc_vinyl = new JDBC_VINYL();
+        jdbc_vinyl.closeConnection();
+
+        JDBC_REVIEW jdbc_review = new JDBC_REVIEW();
+        jdbc_review.closeConnection();
 
     }
 }

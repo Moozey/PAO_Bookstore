@@ -5,14 +5,17 @@ import java.util.List;
 
 public class Review {
     private int id;
+    private static int nextId = 1;
+
     private int rating;
     private String description;
     private int clientId;
     private int productId;
     private List<Review> listOfReviews = new ArrayList<>();
 
-    public Review(int id, int rating, String description, int clientId, int productId) {
-        this.id = id;
+    public Review(int rating, String description, int clientId, int productId) {
+        this.id = nextId;
+        nextId++;
         this.rating = rating;
         this.description = description;
         this.clientId = clientId;
