@@ -11,8 +11,11 @@ public class Main {
         orderFunctionality.testingOrderFunctionality();
 
 
-        JDBC_BOOK jdbc = new JDBC_BOOK();
-        jdbc.closeConnection();
+        JDBC_BOOK jdbc_book = new JDBC_BOOK();
+        jdbc_book.closeConnection();
+
+        JDBC_AUTHOR jdbc_author = new JDBC_AUTHOR();
+        jdbc_author.closeConnection();
 
 
     }

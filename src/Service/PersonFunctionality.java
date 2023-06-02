@@ -24,6 +24,15 @@ public class PersonFunctionality {
     public void testingAuthorInitialization() {
         Author author1 = new Author("razvan", "ilie", "romania");
         System.out.println("List of authors:    " + Author.getListOfAuthors());
+
+        JDBC_AUTHOR jdbc = new JDBC_AUTHOR();
+        Author author2 = new Author("Mihai", "Eminescu", "Romania");
+        Author author3 = new Author("Ion-Luca", "Caragiale", "Romania");
+        jdbc.createAuthor(author2);
+        jdbc.createAuthor(author3);
+        jdbc.deleteAuthor(author3);
+//        jdbc.updateAuthor(author2, "Eminovici");
+        jdbc.getAllAuthors();
     }
 
     public void testingAddingPersonsToBand() {

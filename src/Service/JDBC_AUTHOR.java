@@ -1,16 +1,16 @@
 package Service;
 
-import Model.Book;
+import Model.Author;
 
 import java.sql.*;
 
-public class JDBC_BOOK {
+public class JDBC_AUTHOR {
     private static Connection connection;
     private static String url = "jdbc:postgresql://localhost/projectpao";
     private static String user = "postgres";
     private static String password = "anavoinea";
 
-    public JDBC_BOOK() {
+    public JDBC_AUTHOR() {
         connectDB();
     }
 
@@ -34,22 +34,19 @@ public class JDBC_BOOK {
         }
     }
 
-    public void getAllBooks() {
+    public void getAllAuthors() {
         try {
-            System.out.println("The books from db are:");
+            System.out.println("The authors from this bookstore are:");
             Statement stmt = connection.createStatement();
 
-            ResultSet rs = stmt.executeQuery("SELECT * FROM book;");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM author;");
 
             while (rs.next()) {
-                int bookId = rs.getInt("id_book");
-                String title = rs.getString("title");
-                String description = rs.getString("description");
-                int price = rs.getInt("price");
-                String author = rs.getString("author");
-                String type = rs.getString("type");
-                int pages = rs.getInt("pages");
-                System.out.printf("Book Id = %s, title = %s, author = %s, price = %s\n", bookId, title, description,price, author, type, pages);
+                int authorId = rs.getInt("id_author");
+                String lastName = rs.getString("last_name");
+                String firstName = rs.getString("first_name");
+                String country = rs.getString("country");
+                System.out.printf("Author Id = %s, lastName = %s, firstName = %s, country = %s\n", authorId, lastName, firstName, country);
             }
 
             rs.close();
@@ -59,51 +56,51 @@ public class JDBC_BOOK {
             System.out.println(e.getMessage());
         }
     }
-    public void createBook(Book book) {
+    public void createAuthor(Author author) {
         try {
             Statement stmt = connection.createStatement();
 
-            String query = "INSERT INTO book (id_book, title, description, price, author, type, pages) " +
-                    "VALUES (" + book.getId() + ", '" + book.getTitle() + "', '"
-                    + book.getDescription() + "', "
-                    + book.getPrice() + ", '"
-                    + book.getAuthor().getLastName() + " " + book.getAuthor().getFirstName() + "', '"
-                    + book.getType().getName() + "', "
-                    + book.getPages() + ")";
+            String query = "INSERT INTO author (id_author, last_name, first_name, country) " +
+                    "VALUES (" + author.getId() + ", '"
+                    + author.getLastName() + "', '"
+                    + author.getFirstName() + "', '"
+                    + author.getCountry() + "');";
             System.out.println(query);
             int result = stmt.executeUpdate(query);
 
-            System.out.println("Book created successfully.");
+            System.out.println("Author created successfully.");
         } catch (SQLException e) {
             if (e.getMessage().contains("duplicate key value"))
-                System.out.println("The book exists already.");
+                System.out.println("The author exists already.");
             else
                 e.printStackTrace();
         }
     }
 
-    public void deleteBook(Book book) {
+    public void deleteAuthor(Author author) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "DELETE FROM book WHERE title = '" + book.getTitle() + "';";
+            String query = "DELETE FROM author WHERE last_name = '" + author.getLastName()
+                    + "' AND first_name = '" + author.getFirstName()+ "';";
             System.out.println(query);
             int result = stmt.executeUpdate(query);
             if (result == 0)
-                System.out.println("The book doesn't exist, so it can't be deleted.");
+                System.out.println("The author doesn't exist, so it can't be deleted.");
             else
-                System.out.println("Book deleted successfully.");
+                System.out.println("Author deleted successfully.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void updateBook(Book book, int newPrice) {
+    public void updateAuthor(Author author, String lastname) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "UPDATE book SET price = " + newPrice + " WHERE title = '" + book.getTitle() + "';";
+            String query = "UPDATE author SET last_name = '" + lastname + "' WHERE last_name = '" + author.getLastName()
+                    + "' AND first_name = '" + author.getFirstName()+ "';";
             System.out.println(query);
             int result = stmt.executeUpdate(query);
-            System.out.println("Book updated successfully.");
+            System.out.println("Author last name updated successfully.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
