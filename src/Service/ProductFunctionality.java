@@ -64,6 +64,11 @@ public class ProductFunctionality {
         Type poem = new Type("poem");
         Book book1 = new Book("Pe aripile vantului", "am citit cartea", 25, author1, novel,300);
         Book book2 = new Book("Poezii de Mihai Eminescu", "Multe poezii", 35, author2, poem,150);
+
+        BookService bookService = new BookService();
+        Book book3 = new Book("Pe aripile vantului", "Am citit cartea", 25, author1, novel,300);
+        bookService.createBook(book3);
+
     }
 
 }

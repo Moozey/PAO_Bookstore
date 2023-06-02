@@ -10,8 +10,10 @@ public class Main {
         productService.testingProductFunctionality();
         orderFunctionality.testingOrderFunctionality();
 
-        JDBC jdbc = new JDBC();
-        jdbc.connectDB();
+
+        JDBC jdbcn = new JDBC();
+        jdbcn.closeConnection();
+
 
     }
 }
