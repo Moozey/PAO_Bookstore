@@ -5,6 +5,7 @@ import Model.Book;
 import Model.Type;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -31,18 +32,13 @@ public class BookService {
         System.out.println("Book created successfully.");
 
     }
-    public void deletBook(Book book) {
-//        System.out.println("Book created successfully.");
-        String query = "INSERT INTO book1 (id_book, title, description, price, author, type, pages) VALUES (" + book.getId() + ", '" + book.getTitle() + "', '"
-                + book.getDescription() + "', "
-                + book.getPrice() + ", '"
-                + book.getAuthor().getLastName() + " " + book.getAuthor().getFirstName() + "', '"
-                + book.getType().getName() + "', "
-                + book.getPages() + ")";
-        jdbc.executeQuery(query);
-        System.out.println();
-        System.out.println(query);
-        System.out.println("Book created successfully.");
+    public void deleteBook(Book book) {
 
+            String query = "DELETE FROM book1 WHERE title = '" + book.getTitle() + "';";
+            jdbc.executeQuery(query);
+            System.out.println();
+            System.out.println(query);
+
+            System.out.println("Book deleted successfully.");
     }
 }

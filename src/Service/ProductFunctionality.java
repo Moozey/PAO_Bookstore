@@ -68,6 +68,7 @@ public class ProductFunctionality {
         BookService bookService = new BookService();
         Book book3 = new Book("Pe aripile vantului", "Am citit cartea", 25, author1, novel,300);
         bookService.createBook(book3);
+        bookService.deleteBook(book3);
 
     }
 
