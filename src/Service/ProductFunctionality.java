@@ -19,6 +19,15 @@ public class ProductFunctionality {
         Product p1 = new Product("bread", "a white product that we no longer eat", 3.99);
         Product p2 = new Product( "creion", "tool to draw with", 1.05);
         System.out.println("List of products:" + Product.getListOfProducts());
+
+        JDBC_PRODUCT jdbc_product = new JDBC_PRODUCT();
+        Product p3 = new Product( "pillow", "very soft", 105.99);
+        jdbc_product.createProduct(p1);
+        jdbc_product.createProduct(p2);
+        jdbc_product.createProduct(p3);
+//        jdbc_product.deleteProduct(p3);
+        jdbc_product.updateProduct(p3, 200);
+        jdbc_product.getAllProducts();
     }
 
     public void testingOrderInitialization(){

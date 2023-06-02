@@ -24,5 +24,8 @@ public class Main {
         JDBC_REVIEW jdbc_review = new JDBC_REVIEW();
         jdbc_review.closeConnection();
 
+        JDBC_PRODUCT jdbc_product = new JDBC_PRODUCT();
+        jdbc_product.closeConnection();
+
     }
 }
