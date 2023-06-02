@@ -11,8 +11,8 @@ public class Main {
         orderFunctionality.testingOrderFunctionality();
 
 
-        JDBC jdbcn = new JDBC();
-        jdbcn.closeConnection();
+        JDBC jdbc = new JDBC();
+        jdbc.closeConnection();
 
 
     }
