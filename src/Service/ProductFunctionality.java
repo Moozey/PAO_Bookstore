@@ -65,7 +65,7 @@ public class ProductFunctionality {
         Book book1 = new Book("Pe aripile vantului", "am citit cartea", 25, author1, novel,300);
         Book book2 = new Book("Poezii de Mihai Eminescu", "Multe poezii", 35, author2, poem,150);
 
-        JDBC jdbc = new JDBC();
+        JDBC_BOOK jdbc = new JDBC_BOOK();
         Book book3 = new Book("Pe aripile vantului", "Am citit cartea", 25, author1, novel,300);
         Book book4 = new Book("Pe aripile vantului2", "Nu am citit cartea", 35, author1, novel,350);
         jdbc.createBook(book4);

@@ -11,7 +11,7 @@ public class Main {
         orderFunctionality.testingOrderFunctionality();
 
 
-        JDBC jdbc = new JDBC();
+        JDBC_BOOK jdbc = new JDBC_BOOK();
         jdbc.closeConnection();
 
 

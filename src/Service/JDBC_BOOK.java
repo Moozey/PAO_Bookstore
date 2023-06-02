@@ -4,13 +4,13 @@ import Model.Book;
 
 import java.sql.*;
 
-public class JDBC {
+public class JDBC_BOOK {
     private static Connection connection;
     private static String url = "jdbc:postgresql://localhost/projectpao";
     private static String user = "postgres";
     private static String password = "anavoinea";
 
-    public JDBC() {
+    public JDBC_BOOK() {
         connectDB();
     }
 
