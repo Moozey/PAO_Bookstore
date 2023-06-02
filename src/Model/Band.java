@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Band {
+    private int id;
+    private static int nextId = 1;
     private String bandName;
     private List<Person> bandMembers = new ArrayList<Person>();
     private static List<Band> listOfBands = new ArrayList<Band>();
 
     public Band(String bandName) {
+        this.id = nextId;
+        nextId++;
         this.bandName = bandName;
 //        this.listOfPersons = new ArrayList<Person>();
         addBandToList(this);
@@ -16,6 +20,11 @@ public class Band {
     private void addBandToList(Band band){
         this.listOfBands.add(band);
     }
+
+    public int getId() {
+        return id;
+    }
+
     public List<Band> getListOfBands() {
         return listOfBands;
     }

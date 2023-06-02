@@ -52,10 +52,18 @@ public class ProductFunctionality {
     public void testingVinylsInitialization(){
         Band nirvana = Band.findBandByName("Nirvana");
         Band MJ = new Band("MichaelJackson");
+        Band Simplu = new Band("Simplu");
         Type years70 = new Type("70's");
+        Type popMusic = new Type("Pop Music");
         Vinyl vinylOfNirvana = new Vinyl("Nevermind", "Very nice album", 140, nirvana, years70);
         Vinyl vinylOfMJ = new Vinyl("Thriller", "Very good album", 150, MJ, years70);
 
+        JDBC_VINYL jdbc_vinyl = new JDBC_VINYL();
+        Vinyl vinylOfSmiley = new Vinyl("Acasa", "Aparut in 2009", 25, Simplu, popMusic);
+        jdbc_vinyl.createVinyl(vinylOfSmiley);
+//        jdbc_vinyl.deleteVinyl(vinylOfSmiley);
+        jdbc_vinyl.updateVinyl(vinylOfSmiley, 200);
+        jdbc_vinyl.getAllVinyls();
     }
     public void testingBooksInitialization(){
         Author author1 = new Author("Margaret", "Mitchell", "Georgia");
