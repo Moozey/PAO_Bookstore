@@ -1,11 +1,14 @@
 package Model;
 
+import Service.JDBC_CLIENT;
+import Service.JDBC_PRODUCT;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Person {
     private int id;
-    private static int nextId = 1;
+    private static int nextId = JDBC_CLIENT.getMaxIdClient() + 1;
     private String firstName;
     private String lastName;
     private static List<Person> listOfPersons = new ArrayList<Person>();

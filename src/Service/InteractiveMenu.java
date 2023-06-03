@@ -3,6 +3,7 @@ package Service;
 import Model.Author;
 import Model.Book;
 import Model.Product;
+import Model.Review;
 
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ public class InteractiveMenu  {
     private static JDBC_PRODUCT jdbcProduct = new JDBC_PRODUCT();;
     private static JDBC_AUTHOR jdbcAuthor = new JDBC_AUTHOR();
     private static JDBC_VINYL jdbcVinyl ;
-    private static JDBC_REVIEW jdbcReview;
+    private static JDBC_REVIEW jdbcReview = new JDBC_REVIEW();
     private static JDBC_BOOK jdbcBook = new JDBC_BOOK();
 
     public static void start(){
@@ -197,6 +198,71 @@ public class InteractiveMenu  {
 
                 }
             }
+
+
+            if(choice.equals("4")){
+                while(true){
+                    System.out.println("Cool! Now you will see the menu. Choose what do you want to do next:");
+                    System.out.println("----- MENU -----");
+                    System.out.println("1. Get all reviews.");
+                    System.out.println("2. Create a review");
+                    System.out.println("3. Delete a review");
+                    System.out.println("4. Update a review");
+                    System.out.println("9. Go to main menu.");
+                    System.out.print("Enter your choice (1-5): ");
+                    String choiceReview= scanner.nextLine();
+                    if(choiceReview.equals("1")){
+                        jdbcReview.getAllReviews();
+
+                    }
+                    if(choiceReview.equals("2")){
+                        System.out.println("Specify the review's details:");
+                        System.out.println("What is the rating?");
+                        int rating = Integer.parseInt(scanner.nextLine());
+                        System.out.println("What is the description of this review?");
+                        String description = scanner.nextLine();
+                        System.out.println("What is your last name?");
+                        String clientLastName = scanner.nextLine();
+                        System.out.println("What is your first name?");
+                        String clientFirstName = scanner.nextLine();
+                        int clientId = JDBC_CLIENT.getClientIdByNames(clientLastName, clientFirstName);
+
+                        System.out.println("What is the product name?");
+                        String productName = scanner.nextLine();
+                        int productId = JDBC_PRODUCT.getProductIdByNames(productName);
+
+                        Review r = new Review(rating, description, clientId, productId);
+                        jdbcReview.createReview(r, productId);
+
+                    }
+//                    if(choiceAuthor.equals("3")){
+//                        System.out.println("What is the author's LAST NAME that you want to delete?");
+//                        String deleteAuthorLastName = scanner.nextLine();
+//                        System.out.println("What is the author's FIRST NAME that you want to delete?");
+//                        String deleteAuthorFirstName = scanner.nextLine();
+//                        jdbcAuthor.deleteAuthor(deleteAuthorLastName, deleteAuthorFirstName);
+//                    }
+//                    if(choiceAuthor.equals("4")){
+//                        System.out.println("What is the author's LAST NAME that you want to update?");
+//                        String authorLastName = scanner.nextLine();
+//                        System.out.println("What is the author's FIRST NAME that you want to update?");
+//                        String authorFirstName = scanner.nextLine();
+//                        System.out.println("You can update only the LAST name of the author. Enter the new last name:");
+//                        String newLastName = scanner.nextLine();
+//                        jdbcAuthor.updateAuthor(authorLastName, authorFirstName, newLastName);
+//                    }
+                    if(choiceReview.equals("9")){
+                        break;
+                    }
+                    System.out.println("Do you want to do another action to products? [y/n]");
+                    String choiceActionAuthor = scanner.nextLine();
+                    if(choiceActionAuthor.equals("n"))
+                        break;
+
+                }
+            }
+
+
 
             if(choice.equals("9")){
                 break;

@@ -127,4 +127,29 @@ public class JDBC_PRODUCT {
             return 0;
         }
     }
+    public static int getProductIdByNames(String productName) {
+        try {
+            if (connection == null)
+                connectDB();
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * from product WHERE" +
+                    " title = '"+ productName + "';";
+            System.out.println(query);
+            ResultSet rs = stmt.executeQuery(query);
+
+            int productId = 0;
+            while (rs.next()) {
+                productId = rs.getInt("id_product");
+
+            }
+
+            rs.close();
+            stmt.close();
+            return productId;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
 }
