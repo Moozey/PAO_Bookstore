@@ -235,22 +235,17 @@ public class InteractiveMenu  {
                         jdbcReview.createReview(r, productId);
 
                     }
-//                    if(choiceAuthor.equals("3")){
-//                        System.out.println("What is the author's LAST NAME that you want to delete?");
-//                        String deleteAuthorLastName = scanner.nextLine();
-//                        System.out.println("What is the author's FIRST NAME that you want to delete?");
-//                        String deleteAuthorFirstName = scanner.nextLine();
-//                        jdbcAuthor.deleteAuthor(deleteAuthorLastName, deleteAuthorFirstName);
-//                    }
-//                    if(choiceAuthor.equals("4")){
-//                        System.out.println("What is the author's LAST NAME that you want to update?");
-//                        String authorLastName = scanner.nextLine();
-//                        System.out.println("What is the author's FIRST NAME that you want to update?");
-//                        String authorFirstName = scanner.nextLine();
-//                        System.out.println("You can update only the LAST name of the author. Enter the new last name:");
-//                        String newLastName = scanner.nextLine();
-//                        jdbcAuthor.updateAuthor(authorLastName, authorFirstName, newLastName);
-//                    }
+                    if(choiceReview.equals("3")){
+                        System.out.println("You can not delete the review. It helps us to improve our products.");
+
+                    }
+                    if(choiceReview.equals("4")){
+                        System.out.println("What is the actual description? (Please note that de description should be exactly the same!)");
+                        String reviewDescription = scanner.nextLine();
+                        System.out.println("Enter the new description of the product:");
+                        String newDescription = scanner.nextLine();
+                        jdbcReview.updateReview(reviewDescription, newDescription);
+                    }
                     if(choiceReview.equals("9")){
                         break;
                     }

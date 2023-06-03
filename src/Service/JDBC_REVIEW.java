@@ -93,10 +93,10 @@ public class JDBC_REVIEW {
         }
     }
 
-    public void updateReview(Review review, String description) {
+    public void updateReview(String reviewDescription, String newDescription) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "UPDATE review SET description = '" + description + "' WHERE id_review = " + review.getId() + ";";
+            String query = "UPDATE review SET description = '" + newDescription + "' WHERE description = '" + reviewDescription + "';";
             System.out.println(query);
             int result = stmt.executeUpdate(query);
             System.out.println("Review updated successfully.");

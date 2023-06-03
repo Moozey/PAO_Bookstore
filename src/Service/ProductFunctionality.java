@@ -99,7 +99,7 @@ public class ProductFunctionality {
         Review review1 = new Review(10, "Imi place super mult", client1.getId(), product1.getId() );
         jdbc_review.createReview(review1, product1.getId());
 //        jdbc_review.deleteReview(review1);
-        jdbc_review.updateReview(review1, "Wowow, asta e super nice!");
+//        jdbc_review.updateReview(review1, "Wowow, asta e super nice!");
         jdbc_review.getAllReviews();
     }
 
