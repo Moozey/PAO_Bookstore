@@ -87,7 +87,7 @@ public class ProductFunctionality {
         Book book4 = new Book("Pe aripile vantului2", "Nu am citit cartea", 35, author1, novel,350);
 //        jdbc.createBook(book4);
 //        jdbc.deleteBook(book4);
-        jdbc.updateBook(book4, 100);
+//        jdbc.updateBook(book4, 100);
         jdbc.getAllBooks();
     }
 

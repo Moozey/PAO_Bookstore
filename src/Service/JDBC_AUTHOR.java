@@ -77,11 +77,11 @@ public class JDBC_AUTHOR {
         }
     }
 
-    public void deleteAuthor(Author author) {
+    public void deleteAuthor(String lastName, String firstName) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "DELETE FROM author WHERE last_name = '" + author.getLastName()
-                    + "' AND first_name = '" + author.getFirstName()+ "';";
+            String query = "DELETE FROM author WHERE last_name = '" + lastName
+                    + "' AND first_name = '" + firstName + "';";
             System.out.println(query);
             int result = stmt.executeUpdate(query);
             if (result == 0)
@@ -93,12 +93,12 @@ public class JDBC_AUTHOR {
         }
     }
 
-    public void updateAuthor(Author author, String lastname) {
+    public void updateAuthor(String authorLastName, String authorFirstName, String newLastName) {
         try {
 
             Statement stmt = connection.createStatement();
-            String query = "UPDATE author SET last_name = '" + lastname + "' WHERE last_name = '" + author.getLastName()
-                    + "' AND first_name = '" + author.getFirstName()+ "';";
+            String query = "UPDATE author SET last_name = '" + newLastName + "' WHERE last_name = '" + authorLastName
+                    + "' AND first_name = '" + authorFirstName + "';";
             System.out.println(query);
             int result = stmt.executeUpdate(query);
             System.out.println("Author last name updated successfully.");

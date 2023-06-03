@@ -30,7 +30,7 @@ public class PersonFunctionality {
         Author author3 = new Author("Ion-Luca", "Caragiale", "Romania");
         jdbc.createAuthor(author2);
         jdbc.createAuthor(author3);
-        jdbc.deleteAuthor(author3);
+//        jdbc.deleteAuthor(author3);
 //        jdbc.updateAuthor(author2, "Eminovici");
         jdbc.getAllAuthors();
     }

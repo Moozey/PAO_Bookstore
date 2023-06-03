@@ -82,10 +82,10 @@ public class JDBC_BOOK {
         }
     }
 
-    public void deleteBook(Book book) {
+    public void deleteBook(String title) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "DELETE FROM book WHERE title = '" + book.getTitle() + "';";
+            String query = "DELETE FROM book WHERE title = '" + title + "';";
             System.out.println(query);
             int result = stmt.executeUpdate(query);
             if (result == 0)
@@ -97,10 +97,10 @@ public class JDBC_BOOK {
         }
     }
 
-    public void updateBook(Book book, int newPrice) {
+    public void updateBook(String bookTitle, double newPrice) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "UPDATE book SET price = " + newPrice + " WHERE title = '" + book.getTitle() + "';";
+            String query = "UPDATE book SET price = " + newPrice + " WHERE title = '" + bookTitle + "';";
             System.out.println(query);
             int result = stmt.executeUpdate(query);
             System.out.println("Book updated successfully.");
