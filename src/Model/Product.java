@@ -1,11 +1,13 @@
 package Model;
 
+import Service.JDBC_PRODUCT;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Product implements Comparable<Product> {
     private int id;
-    private static int nextId = 1;
+    private static int nextId = JDBC_PRODUCT.getMaxId() + 1;
     private String title;
     private String description;
     private double price;

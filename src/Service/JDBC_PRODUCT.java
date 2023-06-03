@@ -45,7 +45,7 @@ public class JDBC_PRODUCT {
                 int productId = rs.getInt("id_product");
                 String title = rs.getString("title");
                 String description = rs.getString("description");
-                int price = rs.getInt("price");
+                double price = rs.getDouble("price");
                 System.out.printf("Product Id = %s, title = %s, description = %s, price = %s\n", productId, title, description,price);
             }
 
@@ -76,10 +76,10 @@ public class JDBC_PRODUCT {
         }
     }
 
-    public void deleteProduct(Product product) {
+    public void deleteProduct(String title) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "DELETE FROM product WHERE title = '" + product.getTitle() + "';";
+            String query = "DELETE FROM product WHERE title = '" + title + "';";
             System.out.println(query);
             int result = stmt.executeUpdate(query);
             if (result == 0)
@@ -100,6 +100,31 @@ public class JDBC_PRODUCT {
             System.out.println("Product price updated successfully.");
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static int getMaxId(){
+        try {
+            if (connection == null)
+                connectDB();
+            Statement stmt = connection.createStatement();
+
+            ResultSet rs = stmt.executeQuery("SELECT * FROM product;");
+            int maxId=0;
+            while (rs.next()) {
+                int productId = rs.getInt("id_product");
+                if( productId > maxId){
+                    maxId = productId;
+                }
+            }
+
+            rs.close();
+            stmt.close();
+            return maxId;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
         }
     }
 }
