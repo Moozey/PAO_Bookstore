@@ -26,7 +26,7 @@ public class ProductFunctionality {
         jdbc_product.createProduct(p2);
         jdbc_product.createProduct(p3);
 //        jdbc_product.deleteProduct(p3);
-        jdbc_product.updateProduct(p3, 200);
+//        jdbc_product.updateProduct(p3, 200);
         jdbc_product.getAllProducts();
     }
 

@@ -91,10 +91,10 @@ public class JDBC_PRODUCT {
         }
     }
 
-    public void updateProduct(Product product, int price) {
+    public void updateProduct(String productTitle, double price) {
         try {
             Statement stmt = connection.createStatement();
-            String query = "UPDATE product SET price = " + price + " WHERE title = '" + product.getTitle() + "';";
+            String query = "UPDATE product SET price = " + price + " WHERE title = '" + productTitle+ "';";
             System.out.println(query);
             int result = stmt.executeUpdate(query);
             System.out.println("Product price updated successfully.");

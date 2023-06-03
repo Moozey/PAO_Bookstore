@@ -25,7 +25,10 @@ public class InteractiveMenu  {
                     System.out.println("----- MENU -----");
                     System.out.println("1. Get all products.");
                     System.out.println("2. Create a product");
+                    System.out.println("3. Delete a product");
+                    System.out.println("4. Update product price");
                     System.out.println("9. Go to main menu.");
+                    System.out.print("Enter your choice (1-5): ");
                     String choiceProduct = scanner.nextLine();
                     if(choiceProduct.equals("1")){
                         jdbcProduct.getAllProducts();
@@ -43,6 +46,18 @@ public class InteractiveMenu  {
                         jdbcProduct.createProduct(p);
 
                     }
+                    if(choiceProduct.equals("3")){
+                        System.out.println("What is the product title that you want to delete?");
+                        String deleteProductTitle = scanner.nextLine();
+                        jdbcProduct.deleteProduct(deleteProductTitle);
+                    }
+                    if(choiceProduct.equals("4")){
+                        System.out.println("What is the product title that you want to update?");
+                        String productTitle = scanner.nextLine();
+                        System.out.println("You can update only the price of the product. Enter the new price:");
+                        double updateProductPrice = Double.parseDouble(scanner.nextLine());
+                        jdbcProduct.updateProduct(productTitle, updateProductPrice);
+                    }
                     if(choiceProduct.equals("9")){
                         break;
                     }
@@ -53,6 +68,8 @@ public class InteractiveMenu  {
 
                 }
             }
+
+
             if(choice.equals("9")){
                 break;
             }
