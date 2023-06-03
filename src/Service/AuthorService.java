@@ -17,6 +17,7 @@ public class AuthorService implements AuthorInterface{
         }
         return listOfAuthorsFromCountry;
     }
+
     @Override
     public void deleteAuthorById(int id) {
         for (int authorId = 0; authorId < Author.getListOfAuthors().size(); authorId++) {

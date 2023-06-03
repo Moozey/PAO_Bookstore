@@ -17,7 +17,7 @@ public class JDBC_AUTHOR {
     private static void connectDB() {
         try {
             connection = DriverManager.getConnection(url, user, password);
-            System.out.println("Connected to the PostgreSQL server successfully!");
+//            System.out.println("Connected to the PostgreSQL server successfully!");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -95,6 +95,7 @@ public class JDBC_AUTHOR {
 
     public void updateAuthor(Author author, String lastname) {
         try {
+
             Statement stmt = connection.createStatement();
             String query = "UPDATE author SET last_name = '" + lastname + "' WHERE last_name = '" + author.getLastName()
                     + "' AND first_name = '" + author.getFirstName()+ "';";
@@ -103,6 +104,34 @@ public class JDBC_AUTHOR {
             System.out.println("Author last name updated successfully.");
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static int getAuthorIdByNames(String lastName, String firstName) {
+        try {
+            if (connection == null)
+                connectDB();
+            Statement stmt = connection.createStatement();
+            String query = "SELECT * from author WHERE" +
+                    " (last_name = '"+ lastName + "' OR last_name = '" + firstName + "')" +
+                    " AND" +
+                    " (first_name = '" + firstName + "' OR first_name = '" + lastName + "');";
+            System.out.println(query);
+            ResultSet rs = stmt.executeQuery(query);
+
+            int authorId = 0;
+            while (rs.next()) {
+                authorId = rs.getInt("id_author");
+
+            }
+
+            rs.close();
+            stmt.close();
+            return authorId;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
         }
     }
 }

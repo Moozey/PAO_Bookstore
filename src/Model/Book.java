@@ -5,6 +5,7 @@ import java.util.*;
 public class Book extends Product {
 
     private Author author;
+    private int authorId;
     private Type type;
     private int pages;
     private static List<Book> listOfBooks = new ArrayList<Book>();
@@ -13,6 +14,15 @@ public class Book extends Product {
         super(title, description, price);
         this.author = author;
         this.type = type;
+        this.pages = pages;
+        addBookToList(this);
+    }
+    public Book(String title, String description, double price, int authorId, int typeId, int pages) {
+        super(title, description, price);
+//        this.author = Author.findAuthorById(authorId);
+//        this.type = Type.findTypeId(typeId);
+        this.author = new Author("bla", "bla", "Romania");
+        this.type = new Type("testtype");
         this.pages = pages;
         addBookToList(this);
     }
