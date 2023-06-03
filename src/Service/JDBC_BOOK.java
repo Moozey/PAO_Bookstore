@@ -46,10 +46,10 @@ public class JDBC_BOOK {
                 String title = rs.getString("title");
                 String description = rs.getString("description");
                 int price = rs.getInt("price");
-                String author = rs.getString("author");
-                String type = rs.getString("type");
+                int authorId = rs.getInt("id_author");
+                int typeId = rs.getInt("id_type");
                 int pages = rs.getInt("pages");
-                System.out.printf("Book Id = %s, title = %s, author = %s, price = %s\n", bookId, title, description,price, author, type, pages);
+                System.out.printf("Book Id = %s, title = %s, description = %s, price = %s, authorId = %s, typeId = %s, pages = %s\n", bookId, title, description, price, authorId, typeId, pages);
             }
 
             rs.close();
@@ -59,17 +59,17 @@ public class JDBC_BOOK {
             System.out.println(e.getMessage());
         }
     }
-    public void createBook(Book book) {
+    public void createBook(int id_book, String title, String description, double price, int id_author, int id_type, int pages) {
         try {
             Statement stmt = connection.createStatement();
 
-            String query = "INSERT INTO book (id_book, title, description, price, author, type, pages) " +
-                    "VALUES (" + book.getId() + ", '" + book.getTitle() + "', '"
-                    + book.getDescription() + "', "
-                    + book.getPrice() + ", '"
-                    + book.getAuthor().getLastName() + " " + book.getAuthor().getFirstName() + "', '"
-                    + book.getType().getName() + "', "
-                    + book.getPages() + ")";
+            String query = "INSERT INTO book (id_book, title, description, price, id_author, id_type, pages) " +
+                    "VALUES (" + id_book + ", '" + title + "', '"
+                    + description + "', "
+                    + price + ", "
+                    + id_author + ", "
+                    + id_type + ", "
+                    + pages + ")";
             System.out.println(query);
             int result = stmt.executeUpdate(query);
 

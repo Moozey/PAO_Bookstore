@@ -94,23 +94,27 @@ public class InteractiveMenu  {
                         String bookDescription = scanner.nextLine();
                         System.out.println("What is the book price?");
                         double bookPrice = Double.parseDouble(scanner.nextLine());
+
                         System.out.println("What is the author's LAST NAME of the book?");
                         String bookAuthorLastName = scanner.nextLine();
                         System.out.println("What is the author's FIRST NAME of the book?");
                         String bookAuthorFirstName = scanner.nextLine();
                         int authorId = JDBC_AUTHOR.getAuthorIdByNames(bookAuthorLastName, bookAuthorFirstName);
                         System.out.println("What is the type?");
-                        int typeId = scanner.nextInt();
-//                        String typeName = scanner.nextLine();
+                        String typeName = scanner.nextLine();
+                        int typeId = JDBC_TYPE.getTypeIdByNames(typeName);
+
                         System.out.println("What is the number of pages?");
                         int bookPages = scanner.nextInt();
                         // only do it if the author actually exists
                         // if it doesn't exist, the function wil lreturn 0
-                        if (authorId != 0) {
+                        if (authorId != 0 && typeId != 0) {
                             Book b = new Book(bookTitle, bookDescription, bookPrice, authorId, typeId, bookPages);
-                            jdbcBook.createBook(b);
+                            int bookId = b.getId();
+                            jdbcBook.createBook(bookId, bookTitle, bookDescription, bookPrice, authorId, typeId, bookPages);
                             jdbcProduct.createProduct(b);
                         }
+
                     }
 //                    if(choiceProduct.equals("3")){
 //                        System.out.println("What is the product title that you want to delete?");
