@@ -1,11 +1,14 @@
 package Model;
 
+import Service.AuditService;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Author extends Person {
     private String country;
     private static List<Author> listOfAuthors = new ArrayList<Author>();
+    private static AuditService auditService = AuditService.getInstance();
 
     public Author(String firstName, String lastName, String country) {
         super(firstName, lastName);
@@ -13,6 +16,7 @@ public class Author extends Person {
         addAuthorToList(this);
     }
     private void addAuthorToList(Author author) {
+        auditService.write("Add author to list");
         this.listOfAuthors.add(author);
     }
     public String getCountry() {
@@ -24,6 +28,7 @@ public class Author extends Person {
     }
 
     public static List<Author> getListOfAuthors() {
+        auditService.write("Get list of authors");
         return listOfAuthors;
     }
 

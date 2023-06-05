@@ -9,6 +9,7 @@ public class JDBC_BOOK {
     private static String url = "jdbc:postgresql://localhost/projectpao";
     private static String user = "postgres";
     private static String password = "anavoinea";
+    private static AuditService auditService = AuditService.getInstance();
 
     public JDBC_BOOK() {
         connectDB();
@@ -36,6 +37,7 @@ public class JDBC_BOOK {
 
     public void getAllBooks() {
         try {
+            auditService.write("Get all books");
             System.out.println("The books from db are:");
             Statement stmt = connection.createStatement();
 
@@ -61,6 +63,7 @@ public class JDBC_BOOK {
     }
     public void createBook(int id_book, String title, String description, double price, int id_author, int id_type, int pages) {
         try {
+            auditService.write("Create a book");
             Statement stmt = connection.createStatement();
 
             String query = "INSERT INTO book (id_book, title, description, price, id_author, id_type, pages) " +
@@ -84,6 +87,7 @@ public class JDBC_BOOK {
 
     public void deleteBook(String title) {
         try {
+            auditService.write("Delete a book");
             Statement stmt = connection.createStatement();
             String query = "DELETE FROM book WHERE title = '" + title + "';";
             System.out.println(query);
@@ -99,6 +103,7 @@ public class JDBC_BOOK {
 
     public void updateBook(String bookTitle, double newPrice) {
         try {
+            auditService.write("Update a book");
             Statement stmt = connection.createStatement();
             String query = "UPDATE book SET price = " + newPrice + " WHERE title = '" + bookTitle + "';";
             System.out.println(query);

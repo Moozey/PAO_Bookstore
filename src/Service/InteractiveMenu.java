@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class InteractiveMenu  {
     private static JDBC_PRODUCT jdbcProduct = new JDBC_PRODUCT();;
     private static JDBC_AUTHOR jdbcAuthor = new JDBC_AUTHOR();
-    private static JDBC_VINYL jdbcVinyl ;
     private static JDBC_REVIEW jdbcReview = new JDBC_REVIEW();
     private static JDBC_BOOK jdbcBook = new JDBC_BOOK();
 

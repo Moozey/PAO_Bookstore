@@ -10,6 +10,7 @@ public class JDBC_CLIENT {
     private static String url = "jdbc:postgresql://localhost/projectpao";
     private static String user = "postgres";
     private static String password = "anavoinea";
+    private static AuditService auditService = AuditService.getInstance();
 
     public JDBC_CLIENT() {
         connectDB();
@@ -37,6 +38,7 @@ public class JDBC_CLIENT {
 
     public void getAllClients() {
         try {
+            auditService.write("Get all clients");
             System.out.println("The clients from this bookstore are:");
             Statement stmt = connection.createStatement();
 
@@ -61,6 +63,7 @@ public class JDBC_CLIENT {
     }
     public void createClient(Client client) {
         try {
+            auditService.write("Create a client");
             Statement stmt = connection.createStatement();
 
             String query = "INSERT INTO client (id_client, first_name, last_name, address, email, phone_number) " +
@@ -84,6 +87,7 @@ public class JDBC_CLIENT {
 
     public void deleteClient(String lastName, String firstName) {
         try {
+            auditService.write("Delete a client");
             Statement stmt = connection.createStatement();
             String query = "DELETE FROM client WHERE last_name = '" + lastName
                     + "' AND first_name = '" + firstName + "';";
@@ -100,6 +104,7 @@ public class JDBC_CLIENT {
 
     public void updateClient(String clientLastName, String clientFirstName, String newLastName) {
         try {
+            auditService.write("Update a client");
             Statement stmt = connection.createStatement();
             String query = "UPDATE client SET last_name = '" + newLastName + "' WHERE last_name = '" + clientLastName
                     + "' AND first_name = '" + clientFirstName + "';";

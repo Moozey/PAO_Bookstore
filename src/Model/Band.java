@@ -1,5 +1,7 @@
 package Model;
 
+import Service.AuditService;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +10,8 @@ public class Band {
     private static int nextId = 1;
     private String bandName;
     private List<Person> bandMembers = new ArrayList<Person>();
-    private static List<Band> listOfBands = new ArrayList<Band>();
+    private static List<Band> listOfBands = new ArrayList();
+    private static AuditService auditService = AuditService.getInstance();
 
     public Band(String bandName) {
         this.id = nextId;
@@ -18,6 +21,7 @@ public class Band {
         addBandToList(this);
     }
     private void addBandToList(Band band){
+        auditService.write("Add band to list");
         this.listOfBands.add(band);
     }
 
@@ -41,9 +45,11 @@ public class Band {
         this.bandMembers = listOfPersons;
     }
     public void addPersonToBand(Person personToBeAdded) {
+        auditService.write("Add person to band");
         this.bandMembers.add(personToBeAdded);
     }
     public static Band findBandByName(String name) {
+        auditService.write("Find band by name");
         for (int i = 0; i < listOfBands.size(); i++) {
             if (listOfBands.get(i).getBandName() == name)
                 return listOfBands.get(i);

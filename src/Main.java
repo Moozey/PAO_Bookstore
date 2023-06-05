@@ -2,6 +2,7 @@ import Service.*;
 
 public class Main {
     public static void main(String[] args) {
+        AuditService auditService = AuditService.getInstance();
 //        PersonFunctionality personService = new PersonFunctionality();
 //        ProductFunctionality productService = new ProductFunctionality();
 //        OrderFunctionality orderFunctionality = new OrderFunctionality();
@@ -28,6 +29,7 @@ public class Main {
 //        jdbc_product.closeConnection();
 
         InteractiveMenu.start();
+
 
     }
 }

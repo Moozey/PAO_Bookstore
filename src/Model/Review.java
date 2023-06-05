@@ -1,5 +1,7 @@
 package Model;
 
+import Service.AuditService;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,5 +1,7 @@
 package Model;
 
+import Service.AuditService;
+
 import java.util.*;
 
 public class Book extends Product {
@@ -9,6 +11,7 @@ public class Book extends Product {
     private Type type;
     private int pages;
     private static List<Book> listOfBooks = new ArrayList<Book>();
+    private static AuditService auditService = AuditService.getInstance();
 
     public Book(String title, String description, double price, Author author, Type type, int pages) {
         super(title, description, price);
@@ -28,6 +31,7 @@ public class Book extends Product {
     }
 
     public void addBookToList(Book book){
+        auditService.write("Add book to list");
         this.listOfBooks.add(book);
     }
     public Author getAuthor() {

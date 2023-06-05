@@ -1,5 +1,6 @@
 package Model;
 
+import Service.AuditService;
 import Service.JDBC_PRODUCT;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public class Product implements Comparable<Product> {
     private String description;
     private double price;
     private static List<Product> listOfProducts = new ArrayList<Product>();
+    private static AuditService auditService = AuditService.getInstance();
 
 
     public Product(String title, String description, double price) {
@@ -23,6 +25,7 @@ public class Product implements Comparable<Product> {
         addProductToList(this);
     }
     public void addProductToList(Product product){
+        auditService.write("Add product to list");
         this.listOfProducts.add(product);
     }
     public int getId() {
@@ -62,6 +65,7 @@ public class Product implements Comparable<Product> {
     }
 
     public static Product findProductByName(String name) {
+        auditService.write("Find product by name");
         for (int i = 0; i < listOfProducts.size(); i++) {
             if (listOfProducts.get(i).getTitle() == name)
                 return listOfProducts.get(i);

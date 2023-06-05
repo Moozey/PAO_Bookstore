@@ -9,6 +9,7 @@ public class JDBC_AUTHOR {
     private static String url = "jdbc:postgresql://localhost/projectpao";
     private static String user = "postgres";
     private static String password = "anavoinea";
+    private static AuditService auditService = AuditService.getInstance();
 
     public JDBC_AUTHOR() {
         connectDB();
@@ -36,6 +37,7 @@ public class JDBC_AUTHOR {
 
     public void getAllAuthors() {
         try {
+            auditService.write("Get all authors");
             System.out.println("The authors from this bookstore are:");
             Statement stmt = connection.createStatement();
 
@@ -58,6 +60,7 @@ public class JDBC_AUTHOR {
     }
     public void createAuthor(Author author) {
         try {
+            auditService.write("Create an author");
             Statement stmt = connection.createStatement();
 
             String query = "INSERT INTO author (id_author, last_name, first_name, country) " +
@@ -79,6 +82,7 @@ public class JDBC_AUTHOR {
 
     public void deleteAuthor(String lastName, String firstName) {
         try {
+            auditService.write("Delete an author");
             Statement stmt = connection.createStatement();
             String query = "DELETE FROM author WHERE last_name = '" + lastName
                     + "' AND first_name = '" + firstName + "';";
@@ -95,7 +99,7 @@ public class JDBC_AUTHOR {
 
     public void updateAuthor(String authorLastName, String authorFirstName, String newLastName) {
         try {
-
+            auditService.write("Update an author");
             Statement stmt = connection.createStatement();
             String query = "UPDATE author SET last_name = '" + newLastName + "' WHERE last_name = '" + authorLastName
                     + "' AND first_name = '" + authorFirstName + "';";
@@ -109,6 +113,7 @@ public class JDBC_AUTHOR {
 
     public static int getAuthorIdByNames(String lastName, String firstName) {
         try {
+            auditService.write("Get author id by name");
             if (connection == null)
                 connectDB();
             Statement stmt = connection.createStatement();

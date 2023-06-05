@@ -1,5 +1,7 @@
 package Model;
 
+import Service.AuditService;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,6 +12,8 @@ public class DVD extends Product {
     private Type type;
     private static List<DVD> listOfDVDs = new ArrayList<DVD>();
 
+    private static AuditService auditService = AuditService.getInstance();
+
     public DVD(String title, String description, double price, Band band, Type type) {
         super(title, description, price);
         this.band = band;
@@ -17,6 +21,7 @@ public class DVD extends Product {
         addDVDtoList(this);
     }
     public void addDVDtoList(DVD dvd){
+        auditService.write("Add DVD to list");
         this.listOfDVDs.add(dvd);
     }
 

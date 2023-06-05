@@ -1,5 +1,7 @@
 package Model;
 
+import Service.AuditService;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,8 @@ public class Client extends Person{
     private static List<Client> listOfClients = new ArrayList<Client>();
     private List<Order> pastOrders = new ArrayList<>();
 
+    private static AuditService auditService = AuditService.getInstance();
+
     public Client(String firstName, String lastName, String address, String email, String phoneNumber) {
         super(firstName, lastName);
         this.address = address;
@@ -21,6 +25,7 @@ public class Client extends Person{
 //        System.out.println("listOfClients" + listOfClients);
     }
     private void addClientToList(Client client) {
+        auditService.write("Add client to list");
         this.listOfClients.add(client);
     }
     public String getAddress() {
@@ -68,6 +73,7 @@ public class Client extends Person{
     }
 
     public static Client findClientByName(String lastName, String firstName) {
+        auditService.write("Find client by name");
         for (int i = 0; i < listOfClients.size(); i++) {
             if (listOfClients.get(i).getLastName() == lastName && listOfClients.get(i).getFirstName() == firstName)
                 return listOfClients.get(i);

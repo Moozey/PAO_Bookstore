@@ -1,5 +1,7 @@
 package Model;
 
+import Service.AuditService;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,6 +14,7 @@ public class Order {
 
     private static List<Order> listOfOrders = new ArrayList<>();
     private List<Product> listOfProductsForThisOrder = new ArrayList<>();
+    private static AuditService auditService = AuditService.getInstance();
 
     public Order(Date data) {
         this.id = nextId;
@@ -26,6 +29,7 @@ public class Order {
         addOrderToList(this);
     }
     public void addOrderToList(Order order){
+        auditService.write("Add order to list");
         this.listOfOrders.add(order);
     }
     public int getId() {
@@ -45,6 +49,7 @@ public class Order {
     }
 
     public void addProductToThisOrder(Product product){
+        auditService.write("Add product to this order");
         listOfProductsForThisOrder.add(product);
 //        System.out.println("ListOfProductsOnThisOrder: " + listOfProductsForThisOrder);
 

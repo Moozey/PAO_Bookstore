@@ -10,6 +10,8 @@ public class JDBC_VINYL {
     private static String user = "postgres";
     private static String password = "anavoinea";
 
+    private static AuditService auditService = AuditService.getInstance();
+
     public JDBC_VINYL() {
         connectDB();
     }
@@ -36,6 +38,7 @@ public class JDBC_VINYL {
 
     public void getAllVinyls() {
         try {
+            auditService.write("Get all vinyls");
             System.out.println("The vinyls from db are:");
             Statement stmt = connection.createStatement();
 
@@ -60,6 +63,7 @@ public class JDBC_VINYL {
     }
     public void createVinyl(Vinyl vinyl) {
         try {
+            auditService.write("Create a vinyl");
             Statement stmt = connection.createStatement();
 
             String query = "INSERT INTO vinyl (id_vinyl, title, description, price, band, type) " +
@@ -82,6 +86,7 @@ public class JDBC_VINYL {
 
     public void deleteVinyl(Vinyl vinyl) {
         try {
+            auditService.write("Delete a vinyl");
             Statement stmt = connection.createStatement();
             String query = "DELETE FROM vinyl WHERE title = '" + vinyl.getTitle() + "';";
             System.out.println(query);
@@ -97,6 +102,7 @@ public class JDBC_VINYL {
 
     public void updateVinyl(Vinyl vinyl, int newPrice) {
         try {
+            auditService.write("Update a vinyl");
             Statement stmt = connection.createStatement();
             String query = "UPDATE vinyl SET price = " + newPrice + " WHERE title = '" + vinyl.getTitle() + "';";
             System.out.println(query);

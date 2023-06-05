@@ -9,6 +9,7 @@ public class JDBC_PRODUCT {
     private static String url = "jdbc:postgresql://localhost/projectpao";
     private static String user = "postgres";
     private static String password = "anavoinea";
+    private static AuditService auditService = AuditService.getInstance();
 
     public JDBC_PRODUCT() {
         connectDB();
@@ -36,6 +37,7 @@ public class JDBC_PRODUCT {
 
     public void getAllProducts() {
         try {
+            auditService.write("Get all products");
             System.out.println("The products from db are:");
             Statement stmt = connection.createStatement();
 
@@ -58,6 +60,7 @@ public class JDBC_PRODUCT {
     }
     public void createProduct(Product product) {
         try {
+            auditService.write("Create a prodct");
             Statement stmt = connection.createStatement();
 
             String query = "INSERT INTO product (id_product, title, description, price) " +
@@ -78,6 +81,7 @@ public class JDBC_PRODUCT {
 
     public void deleteProduct(String title) {
         try {
+            auditService.write("Delete a product");
             Statement stmt = connection.createStatement();
             String query = "DELETE FROM product WHERE title = '" + title + "';";
             System.out.println(query);
@@ -93,6 +97,7 @@ public class JDBC_PRODUCT {
 
     public void updateProduct(String productTitle, double price) {
         try {
+            auditService.write("Update a product");
             Statement stmt = connection.createStatement();
             String query = "UPDATE product SET price = " + price + " WHERE title = '" + productTitle+ "';";
             System.out.println(query);
@@ -129,6 +134,7 @@ public class JDBC_PRODUCT {
     }
     public static int getProductIdByNames(String productName) {
         try {
+            auditService.write("Get product id by name");
             if (connection == null)
                 connectDB();
             Statement stmt = connection.createStatement();

@@ -9,6 +9,8 @@ public class JDBC_REVIEW {
     private static String url = "jdbc:postgresql://localhost/projectpao";
     private static String user = "postgres";
     private static String password = "anavoinea";
+    private static AuditService auditService = AuditService.getInstance();
+
 
     public JDBC_REVIEW() {
         connectDB();
@@ -36,6 +38,7 @@ public class JDBC_REVIEW {
 
     public void getAllReviews() {
         try {
+            auditService.write("Get all reviews");
             System.out.println("The reviews from db are:");
             Statement stmt = connection.createStatement();
 
@@ -59,6 +62,7 @@ public class JDBC_REVIEW {
     }
     public void createReview(Review review, int productId) {
         try {
+            auditService.write("Create a review");
             Statement stmt = connection.createStatement();
 
             String query = "INSERT INTO review (id_review, rating, description, id_client, id_product) " +
@@ -80,6 +84,7 @@ public class JDBC_REVIEW {
 
     public void deleteReview(Review review) {
         try {
+            auditService.write("Tried to delete a review");
             Statement stmt = connection.createStatement();
             String query = "DELETE FROM review WHERE id_review = " + review.getId() + ";";
             System.out.println(query);
@@ -95,6 +100,7 @@ public class JDBC_REVIEW {
 
     public void updateReview(String reviewDescription, String newDescription) {
         try {
+            auditService.write("Update a review");
             Statement stmt = connection.createStatement();
             String query = "UPDATE review SET description = '" + newDescription + "' WHERE description = '" + reviewDescription + "';";
             System.out.println(query);

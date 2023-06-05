@@ -10,6 +10,8 @@ public class JDBC_TYPE {
     private static String user = "postgres";
     private static String password = "anavoinea";
 
+    private static AuditService auditService = AuditService.getInstance();
+
     public JDBC_TYPE() {
         connectDB();
     }
@@ -36,6 +38,7 @@ public class JDBC_TYPE {
 
     public void getAllTypes() {
         try {
+            auditService.write("Get all types");
             System.out.println("The types from db are:");
             Statement stmt = connection.createStatement();
 
@@ -56,6 +59,7 @@ public class JDBC_TYPE {
     }
     public void createType(Type type) {
         try {
+            auditService.write("Get all types");
             Statement stmt = connection.createStatement();
 
             String query = "INSERT INTO type (id_type, name) " +
@@ -74,6 +78,7 @@ public class JDBC_TYPE {
 
     public void deleteType(Type type) {
         try {
+            auditService.write("Delete a type");
             Statement stmt = connection.createStatement();
             String query = "DELETE FROM type WHERE title = '" + type.getName() + "';";
             System.out.println(query);
@@ -89,6 +94,7 @@ public class JDBC_TYPE {
 
     public void updateType(Type type, String typeName) {
         try {
+            auditService.write("Update a type");
             Statement stmt = connection.createStatement();
             String query = "UPDATE type SET name = '" + typeName + "' WHERE title = '" + type.getName() + "';";
             System.out.println(query);

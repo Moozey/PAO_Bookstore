@@ -1,5 +1,6 @@
 package Model;
 
+import Service.AuditService;
 import Service.JDBC_CLIENT;
 import Service.JDBC_PRODUCT;
 
@@ -12,6 +13,7 @@ public class Person {
     private String firstName;
     private String lastName;
     private static List<Person> listOfPersons = new ArrayList<Person>();
+    private static AuditService auditService = AuditService.getInstance();
 
     public Person(String firstName, String lastName) {
         this.id = nextId;
@@ -21,6 +23,7 @@ public class Person {
         addPersonToList(this);
     }
     private void addPersonToList(Person person) {
+        auditService.write("Add person to list");
         this.listOfPersons.add(person);
     }
 
